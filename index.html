@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Հարություն & Մանե</title>
+<title>Հարություն & Մանե | 07.11.2026</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+Armenian:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+/* ==================================================
+   RESET
+================================================== */
 
 *{
     margin:0;
@@ -24,27 +28,27 @@ html{
 }
 
 body{
-    background:#f5eee5;
-    color:#4d3935;
+    background:#f6efe6;
+    color:#4e3b37;
     overflow-x:hidden;
 }
 
 
-/* =========================================================
-   LANGUAGE SWITCH
-========================================================= */
+/* ==================================================
+   LANGUAGE
+================================================== */
 
 .language{
     position:absolute;
     top:24px;
-    right:26px;
+    right:25px;
     z-index:100;
 
     display:flex;
     align-items:center;
     gap:7px;
 
-    font-family:'Noto Serif Armenian',serif;
+    font-family:'Noto Serif Armenian', serif;
     font-size:12px;
 }
 
@@ -53,52 +57,55 @@ body{
     background:none;
     cursor:pointer;
 
+    color:#918784;
+
     font-family:inherit;
     font-size:12px;
 
-    color:#8a8180;
-    padding:4px;
+    padding:5px;
 }
 
 .language button.active{
-    color:#762f36;
+    color:#7a3038;
     font-weight:600;
 }
 
 .language span{
-    color:#c8bdb6;
+    color:#c9bfba;
 }
 
 
-/* =========================================================
+/* ==================================================
    FIRST PAGE
-========================================================= */
+================================================== */
 
 .envelope-page{
     position:fixed;
     inset:0;
     z-index:9999;
 
-    background:
-        radial-gradient(
-            circle at 20% 15%,
-            rgba(130,90,75,.08),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 80% 85%,
-            rgba(130,90,75,.06),
-            transparent 30%
-        ),
-        #f7f5f1;
-
     display:flex;
     align-items:center;
     justify-content:center;
 
+    background:
+        radial-gradient(
+            circle at 18% 18%,
+            rgba(150,120,95,.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 82% 80%,
+            rgba(150,120,95,.06),
+            transparent 30%
+        ),
+        #f8f6f2;
+
     transition:
         opacity 1.2s ease,
         visibility 1.2s ease;
+
+    overflow:hidden;
 }
 
 .envelope-page.hide{
@@ -107,43 +114,38 @@ body{
     pointer-events:none;
 }
 
-
-/* =========================================================
-   ENVELOPE WRAPPER
-========================================================= */
-
 .envelope-scene{
-    width:min(92vw,700px);
+    width:min(92vw,660px);
     text-align:center;
 }
 
 
-/* =========================================================
-   REALISTIC ENVELOPE
-========================================================= */
+/* ==================================================
+   ENVELOPE
+================================================== */
 
 .envelope{
     position:relative;
 
-    width:min(88vw,620px);
-    height:min(55vw,390px);
+    width:min(90vw,620px);
+    height:min(60vw,390px);
 
     min-height:245px;
 
     margin:auto;
 
-    cursor:pointer;
-
     perspective:1600px;
+
+    cursor:pointer;
 
     filter:
         drop-shadow(
-            0 28px 28px rgba(50,35,30,.14)
+            0 25px 28px rgba(55,38,32,.15)
         );
 }
 
 
-/* envelope back */
+/* BACK */
 
 .envelope-back{
     position:absolute;
@@ -152,12 +154,11 @@ body{
     background:
         linear-gradient(
             145deg,
-            #fffdf9,
-            #eee7df
+            #fffdf9 0%,
+            #f1eae0 100%
         );
 
-    border:
-        1px solid rgba(90,65,55,.12);
+    border:1px solid rgba(80,60,50,.13);
 
     border-radius:3px;
 
@@ -167,7 +168,7 @@ body{
 }
 
 
-/* paper texture */
+/* subtle paper texture */
 
 .envelope-back::after{
     content:"";
@@ -180,69 +181,71 @@ body{
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(120,100,80,.025) 0px,
-            rgba(120,100,80,.025) 1px,
+            rgba(130,100,80,.025) 0px,
+            rgba(130,100,80,.025) 1px,
             transparent 1px,
             transparent 5px
         );
 }
 
 
-/* =========================================================
-   INNER LETTER
-========================================================= */
+/* ==================================================
+   INVITATION PAPER
+================================================== */
 
 .letter{
     position:absolute;
 
-    width:76%;
-    height:90%;
+    width:72%;
+    height:91%;
 
-    left:12%;
-    top:7%;
+    left:14%;
+    top:5%;
 
     background:
         linear-gradient(
             135deg,
             #fffdf8,
-            #f8f1e8
+            #f9f1e8
         );
 
     box-shadow:
-        0 6px 22px rgba(70,45,35,.14);
+        0 7px 25px rgba(65,45,35,.14);
 
     z-index:2;
 
     display:flex;
-    flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+    flex-direction:column;
 
     transition:
-        transform 1.4s cubic-bezier(.77,0,.18,1),
-        top 1.4s cubic-bezier(.77,0,.18,1);
+        transform 1.45s cubic-bezier(.77,0,.18,1),
+        top 1.45s cubic-bezier(.77,0,.18,1);
 }
-
-
-/* letter names */
 
 .letter-small{
     font-family:'Bad Script',cursive;
+
+    color:#8b7770;
+
     font-size:18px;
-    color:#84736d;
+
     margin-bottom:7px;
 }
 
 .letter-names{
     font-family:'Bad Script',cursive;
-    font-size:45px;
-    color:#762f36;
+
+    color:#783139;
+
+    font-size:42px;
 }
 
 
-/* =========================================================
-   LOWER FOLDS
-========================================================= */
+/* ==================================================
+   SIDE FOLDS
+================================================== */
 
 .fold-left{
     position:absolute;
@@ -250,10 +253,10 @@ body{
     left:0;
     bottom:0;
 
-    width:51%;
-    height:77%;
+    width:52%;
+    height:78%;
 
-    background:#ede3d8;
+    background:#eee4d9;
 
     clip-path:
         polygon(
@@ -271,10 +274,10 @@ body{
     right:0;
     bottom:0;
 
-    width:51%;
-    height:77%;
+    width:52%;
+    height:78%;
 
-    background:#e8ddd1;
+    background:#e8ddd2;
 
     clip-path:
         polygon(
@@ -287,23 +290,54 @@ body{
 }
 
 
-/* =========================================================
-   FLAP
-========================================================= */
+/* ==================================================
+   FRONT BOTTOM FLAP
+================================================== */
 
-.flap{
+.bottom-flap{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:57%;
+
+    background:
+        linear-gradient(
+            160deg,
+            #f5ebdf,
+            #e8dbcd
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 20%,
+            100% 100%
+        );
+
+    z-index:6;
+}
+
+
+/* ==================================================
+   TOP FLAP
+================================================== */
+
+.top-flap{
     position:absolute;
 
     left:0;
     top:0;
 
     width:100%;
-    height:68%;
+    height:69%;
 
     background:
         linear-gradient(
             145deg,
-            #fffdf9,
+            #fffefa,
             #eee5da
         );
 
@@ -316,112 +350,123 @@ body{
 
     transform-origin:top center;
 
-    z-index:7;
+    z-index:8;
 
     transition:
-        transform 1.4s cubic-bezier(.77,0,.18,1);
+        transform 1.45s cubic-bezier(.77,0,.18,1);
 }
 
 
-/* =========================================================
-   SEAL
-========================================================= */
+/* ==================================================
+   GOLD STAMP
+================================================== */
 
-.seal{
+.stamp{
     position:absolute;
 
     left:50%;
-    top:53%;
+    top:57%;
 
     transform:
         translate(-50%,-50%);
 
-    width:78px;
-    height:78px;
+    width:82px;
+    height:82px;
 
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #b27b55,
-            #8f5e3d 50%,
-            #6e422c 100%
-        );
-
-    box-shadow:
-        0 6px 12px rgba(70,40,25,.25),
-        inset 2px 2px 5px rgba(255,255,255,.15);
-
-    z-index:15;
-
-    color:#f7e8d5;
+    z-index:20;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
+    color:#fff2d0;
+
     font-family:'Bad Script',cursive;
     font-size:25px;
 
+    background:
+        radial-gradient(
+            circle at 32% 27%,
+            #e6c887 0%,
+            #c9a45b 32%,
+            #96713a 68%,
+            #765426 100%
+        );
+
+    box-shadow:
+        0 7px 13px rgba(60,40,20,.27),
+        inset 2px 2px 4px rgba(255,255,255,.30),
+        inset -3px -3px 5px rgba(75,45,15,.18);
+
     transition:
         opacity .45s ease,
-        transform .55s ease;
+        transform .5s ease;
 }
 
-.seal::before{
+.stamp::before{
     content:"";
 
     position:absolute;
 
     inset:8px;
 
-    border:
-        1px solid
-        rgba(255,235,215,.3);
+    border:1px solid rgba(255,245,215,.5);
 
     border-radius:50%;
 }
 
-.envelope.open .seal{
+.stamp::after{
+    content:"❦";
+
+    position:absolute;
+
+    font-size:17px;
+
+    color:rgba(255,239,205,.75);
+
+    bottom:10px;
+}
+
+
+/* ==================================================
+   OPEN ANIMATION
+================================================== */
+
+.envelope.open .top-flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+    top:-4%;
+    transform:translateY(-48%);
+}
+
+.envelope.open .stamp{
     opacity:0;
+
     transform:
         translate(-50%,-50%)
         scale(.55);
 }
 
 
-/* =========================================================
-   OPEN STATE
-========================================================= */
-
-.envelope.open .flap{
-    transform:
-        rotateX(180deg);
-}
-
-.envelope.open .letter{
-    top:-2%;
-    transform:
-        translateY(-45%);
-}
-
-
-/* =========================================================
-   OPEN TEXT
-========================================================= */
+/* ==================================================
+   OPEN HINT
+================================================== */
 
 .open-hint{
     margin-top:30px;
 
     font-family:'Bad Script',cursive;
 
-    font-size:25px;
+    color:#776b67;
 
-    color:#7a6b67;
+    font-size:24px;
 
     animation:
-        pulse 2.4s ease-in-out infinite;
+        pulse 2.5s ease-in-out infinite;
 }
 
 @keyframes pulse{
@@ -433,20 +478,17 @@ body{
     50%{
         opacity:1;
     }
-
 }
 
 
-/* =========================================================
-   SECOND / MAIN PAGE
-========================================================= */
+/* ==================================================
+   MAIN PAGE
+================================================== */
 
 .main{
-    min-height:100vh;
-
     opacity:0;
 
-    transform:translateY(30px);
+    transform:translateY(25px);
 
     transition:
         opacity 1.3s ease,
@@ -459,147 +501,127 @@ body{
 }
 
 
-/* =========================================================
+/* ==================================================
    HERO
-========================================================= */
+================================================== */
 
 .hero{
     min-height:100vh;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     text-align:center;
 
     position:relative;
+
     overflow:hidden;
 
     background:
         radial-gradient(
             circle at 15% 15%,
-            rgba(130,64,57,.06),
-            transparent 25%
+            rgba(130,64,57,.07),
+            transparent 27%
         ),
         radial-gradient(
             circle at 85% 85%,
             rgba(130,64,57,.06),
-            transparent 25%
+            transparent 28%
         ),
         #f5eee5;
 }
 
 .hero-content{
     position:relative;
-    z-index:5;
+    z-index:4;
 
-    padding:40px 22px;
+    padding:50px 22px;
 }
-
-
-/* small line */
 
 .pre-title{
     font-family:'Bad Script',cursive;
 
-    font-size:27px;
+    font-size:26px;
 
-    color:#86605a;
+    color:#875b55;
 
-    margin-bottom:17px;
+    margin-bottom:16px;
 }
-
-
-/* MAIN NAMES */
 
 .names{
     font-family:'Bad Script',cursive;
 
-    color:#762f36;
+    color:#783139;
 
     font-size:
         clamp(
-            65px,
+            58px,
             12vw,
-            120px
+            115px
         );
 
     line-height:1.05;
 }
 
 .amp{
-    font-family:
-        'Cormorant Garamond',
-        serif;
+    font-family:'Cormorant Garamond',serif;
 
-    font-size:.5em;
+    font-size:.48em;
 
-    margin:0 11px;
+    margin:0 10px;
 }
-
-
-/* date */
 
 .date{
-    margin-top:30px;
+    margin-top:27px;
 
-    font-family:
-        'Cormorant Garamond',
-        serif;
+    font-family:'Cormorant Garamond',serif;
 
-    font-size:27px;
+    color:#604440;
 
-    letter-spacing:8px;
+    font-size:26px;
 
-    color:#624640;
+    letter-spacing:7px;
 }
 
-
-/* line */
-
 .decor-line{
-    width:78px;
+    width:80px;
 
     height:1px;
 
-    background:#a47b6e;
+    background:#a47b70;
 
     margin:28px auto;
 }
-
-
-/* text */
 
 .hero-text{
     width:min(600px,100%);
 
     margin:auto;
 
-    font-family:
-        'Noto Serif Armenian',
-        serif;
+    font-family:'Noto Serif Armenian',serif;
+
+    color:#604945;
 
     font-size:17px;
 
     line-height:2;
-
-    color:#604944;
 }
 
 
-/* =========================================================
-   LEAVES
-========================================================= */
+/* ==================================================
+   FALLING LEAVES
+================================================== */
 
 .leaf{
     position:absolute;
 
     width:17px;
-    height:28px;
+    height:27px;
 
     background:#895149;
 
-    opacity:.26;
+    opacity:.23;
 
     border-radius:
         100% 0 100% 0;
@@ -609,7 +631,7 @@ body{
 }
 
 .leaf:nth-child(1){
-    left:8%;
+    left:7%;
     animation-delay:-2s;
 }
 
@@ -619,12 +641,12 @@ body{
 }
 
 .leaf:nth-child(3){
-    left:35%;
+    left:33%;
     animation-delay:-4s;
 }
 
 .leaf:nth-child(4){
-    left:53%;
+    left:52%;
     animation-delay:-10s;
 }
 
@@ -634,7 +656,7 @@ body{
 }
 
 .leaf:nth-child(6){
-    left:90%;
+    left:89%;
     animation-delay:-3s;
 }
 
@@ -651,15 +673,14 @@ body{
         top:110%;
         transform:
             rotate(360deg)
-            translateX(-75px);
+            translateX(-80px);
     }
-
 }
 
 
-/* =========================================================
-   SECTION
-========================================================= */
+/* ==================================================
+   SECTIONS
+================================================== */
 
 .section{
     min-height:75vh;
@@ -668,9 +689,8 @@ body{
         100px 25px;
 
     display:flex;
-
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     text-align:center;
 }
@@ -682,48 +702,47 @@ body{
 .section-title{
     font-family:'Bad Script',cursive;
 
-    color:#762f36;
-
     font-size:53px;
 
-    margin-bottom:28px;
+    color:#783139;
+
+    margin-bottom:27px;
 }
 
 .section-text{
-    font-family:
-        'Noto Serif Armenian',
-        serif;
+    font-family:'Noto Serif Armenian',serif;
 
     font-size:18px;
 
     line-height:2;
 
-    color:#604844;
+    color:#604945;
 }
 
 
-/* =========================================================
-   DATE SECTION
-========================================================= */
+/* ==================================================
+   DATE
+================================================== */
 
 .date-section{
-    background:#e9ded1;
+    background:#e9ded2;
 }
 
 .date-card{
+    position:relative;
+
     width:min(460px,100%);
 
     margin:auto;
 
     background:#fffaf3;
 
-    padding:65px 35px;
+    padding:
+        65px 35px;
 
     box-shadow:
         0 20px 50px
         rgba(70,35,30,.09);
-
-    position:relative;
 }
 
 .date-card::before{
@@ -741,9 +760,9 @@ body{
 .date-number{
     font-family:'Bad Script',cursive;
 
-    color:#762f36;
-
     font-size:110px;
+
+    color:#783139;
 
     line-height:.9;
 }
@@ -751,9 +770,7 @@ body{
 .month{
     margin-top:20px;
 
-    font-family:
-        'Noto Serif Armenian',
-        serif;
+    font-family:'Noto Serif Armenian',serif;
 
     font-size:20px;
 
@@ -769,11 +786,11 @@ body{
 }
 
 
-/* =========================================================
-   DETAILS
-========================================================= */
+/* ==================================================
+   LOCATION CARDS
+================================================== */
 
-.details{
+.locations{
     display:grid;
 
     grid-template-columns:
@@ -784,7 +801,7 @@ body{
     margin-top:45px;
 }
 
-.detail{
+.location-card{
     background:#fffaf3;
 
     padding:
@@ -795,49 +812,126 @@ body{
         rgba(70,35,30,.06);
 }
 
-.detail-icon{
-    font-size:28px;
-
-    color:#762f36;
-
-    margin-bottom:12px;
-}
-
-.detail h3{
-    font-family:'Bad Script',cursive;
-
-    color:#762f36;
-
+.location-icon{
     font-size:30px;
 
+    color:#783139;
+
     margin-bottom:12px;
 }
 
-.detail p{
-    font-family:
-        'Noto Serif Armenian',
-        serif;
+.location-card h3{
+    font-family:'Bad Script',cursive;
+
+    color:#783139;
+
+    font-size:31px;
+
+    margin-bottom:10px;
+}
+
+.location-time{
+    font-family:'Noto Serif Armenian',serif;
+
+    color:#614843;
 
     font-size:16px;
 
-    line-height:1.9;
+    line-height:1.8;
+
+    margin-bottom:20px;
 }
 
 
-/* =========================================================
+/* address hidden */
+
+.location-details{
+    overflow:hidden;
+
+    max-height:0;
+
+    opacity:0;
+
+    transition:
+        max-height .6s ease,
+        opacity .5s ease;
+}
+
+.location-card.open .location-details{
+    max-height:160px;
+
+    opacity:1;
+}
+
+.address{
+    font-family:'Noto Serif Armenian',serif;
+
+    color:#735d56;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+    padding-top:15px;
+
+    border-top:
+        1px solid
+        rgba(100,70,60,.12);
+}
+
+.map-link{
+    display:inline-block;
+
+    margin-top:10px;
+
+    color:#783139;
+
+    text-decoration:none;
+
+    font-family:'Noto Serif Armenian',serif;
+
+    font-size:14px;
+
+    border-bottom:
+        1px solid
+        rgba(120,48,57,.35);
+}
+
+.location-toggle{
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    color:#783139;
+
+    font-family:'Noto Serif Armenian',serif;
+
+    font-size:14px;
+
+    padding:8px 0;
+
+    border-bottom:
+        1px solid
+        rgba(120,48,57,.35);
+}
+
+
+/* ==================================================
    RSVP
-========================================================= */
+================================================== */
 
 .rsvp{
-    background:#762f36;
+    background:#783139;
 }
 
 .rsvp .section-title{
-    color:#fff0e5;
+    color:#fff0e4;
 }
 
 .rsvp .section-text{
-    color:#f8e8dc;
+    color:#f7e8dc;
 }
 
 .rsvp-button{
@@ -848,39 +942,37 @@ body{
     padding:
         15px 35px;
 
-    color:#fff4ea;
-
     border:
         1px solid
-        #e7cfc0;
+        #ead0c1;
+
+    color:#fff5ec;
 
     text-decoration:none;
 
-    font-family:
-        'Noto Serif Armenian',
-        serif;
+    font-family:'Noto Serif Armenian',serif;
 
     transition:.3s;
 }
 
 .rsvp-button:hover{
-    background:#fff4ea;
+    background:#fff5ec;
 
-    color:#762f36;
+    color:#783139;
 }
 
 
-/* =========================================================
+/* ==================================================
    FOOTER
-========================================================= */
+================================================== */
 
 .footer{
+    background:#f5eee5;
+
     padding:
         80px 20px;
 
     text-align:center;
-
-    background:#f5eee5;
 }
 
 .footer-names{
@@ -888,19 +980,19 @@ body{
 
     font-size:55px;
 
-    color:#762f36;
+    color:#783139;
 }
 
 .footer-date{
-    margin-top:16px;
+    margin-top:15px;
 
     letter-spacing:5px;
 }
 
 
-/* =========================================================
+/* ==================================================
    MUSIC
-========================================================= */
+================================================== */
 
 .music{
     position:fixed;
@@ -908,34 +1000,34 @@ body{
     left:20px;
     bottom:20px;
 
-    z-index:100;
+    z-index:200;
 }
 
 .music button{
-    width:55px;
-    height:55px;
+    width:56px;
+    height:56px;
 
     border:none;
 
     border-radius:50%;
 
-    background:#762f36;
+    background:#783139;
 
-    color:white;
-
-    font-size:19px;
+    color:#fff;
 
     cursor:pointer;
 
+    font-size:19px;
+
     box-shadow:
         0 8px 22px
-        rgba(70,30,30,.2);
+        rgba(70,30,30,.22);
 }
 
 
-/* =========================================================
+/* ==================================================
    MOBILE
-========================================================= */
+================================================== */
 
 @media(max-width:650px){
 
@@ -946,19 +1038,18 @@ body{
 
     .envelope{
         width:94vw;
-        height:57vw;
-
+        height:58vw;
         min-height:220px;
     }
 
-    .seal{
-        width:67px;
-        height:67px;
-        font-size:22px;
+    .letter-names{
+        font-size:30px;
     }
 
-    .letter-names{
-        font-size:32px;
+    .stamp{
+        width:68px;
+        height:68px;
+        font-size:22px;
     }
 
     .open-hint{
@@ -966,7 +1057,7 @@ body{
     }
 
     .names{
-        font-size:65px;
+        font-size:63px;
     }
 
     .date{
@@ -978,7 +1069,7 @@ body{
         font-size:44px;
     }
 
-    .details{
+    .locations{
         grid-template-columns:1fr;
     }
 
@@ -987,9 +1078,8 @@ body{
     }
 
     .footer-names{
-        font-size:45px;
+        font-size:46px;
     }
-
 }
 
 </style>
@@ -999,9 +1089,9 @@ body{
 <body>
 
 
-<!-- =========================================================
-     FIRST PAGE — ENVELOPE
-========================================================= -->
+<!-- ==================================================
+     FIRST PAGE
+================================================== -->
 
 <div
     class="envelope-page"
@@ -1016,7 +1106,9 @@ body{
             id="introHy"
             class="active"
             onclick="setLanguage('hy')">
+
             ՀԱՅ
+
         </button>
 
         <span>|</span>
@@ -1024,7 +1116,9 @@ body{
         <button
             id="introRu"
             onclick="setLanguage('ru')">
+
             РУС
+
         </button>
 
     </div>
@@ -1040,7 +1134,7 @@ body{
             id="envelope">
 
 
-            <!-- INNER CARD -->
+            <!-- LETTER INSIDE -->
 
             <div class="letter">
 
@@ -1060,7 +1154,7 @@ body{
                         data-hy="Հարություն & Մանե"
                         data-ru="Арутюн & Мане">
 
-                        Հարություն & Мане
+                        Հարություն & Մանե
 
                     </span>
 
@@ -1069,26 +1163,22 @@ body{
             </div>
 
 
-            <!-- ENVELOPE BODY -->
+            <!-- ENVELOPE -->
 
             <div class="envelope-back"></div>
-
-
-            <!-- FOLDS -->
 
             <div class="fold-left"></div>
 
             <div class="fold-right"></div>
 
+            <div class="bottom-flap"></div>
 
-            <!-- FLAP -->
-
-            <div class="flap"></div>
+            <div class="top-flap"></div>
 
 
-            <!-- SEAL -->
+            <!-- GOLD STAMP -->
 
-            <div class="seal">
+            <div class="stamp">
                 Հ & Մ
             </div>
 
@@ -1113,9 +1203,9 @@ body{
 
 
 
-<!-- =========================================================
+<!-- ==================================================
      MAIN INVITATION
-========================================================= -->
+================================================== -->
 
 <div
     class="main"
@@ -1130,7 +1220,9 @@ body{
             id="mainHy"
             class="active"
             onclick="setLanguage('hy')">
+
             ՀԱՅ
+
         </button>
 
         <span>|</span>
@@ -1138,16 +1230,18 @@ body{
         <button
             id="mainRu"
             onclick="setLanguage('ru')">
+
             РУС
+
         </button>
 
     </div>
 
 
 
-    <!-- =====================================================
+    <!-- ==================================================
          HERO
-    ===================================================== -->
+    ================================================== -->
 
     <section class="hero">
 
@@ -1230,9 +1324,9 @@ body{
 
 
 
-    <!-- =====================================================
+    <!-- ==================================================
          OUR DAY
-    ===================================================== -->
+    ================================================== -->
 
     <section class="section">
 
@@ -1266,17 +1360,19 @@ body{
 
             </div>
 
+
         </div>
 
     </section>
 
 
 
-    <!-- =====================================================
+    <!-- ==================================================
          DATE
-    ===================================================== -->
+    ================================================== -->
 
-    <section class="section date-section">
+    <section
+        class="section date-section">
 
 
         <div class="section-inner">
@@ -1323,9 +1419,9 @@ body{
 
 
 
-    <!-- =====================================================
-         DETAILS
-    ===================================================== -->
+    <!-- ==================================================
+         LOCATIONS
+    ================================================== -->
 
     <section class="section">
 
@@ -1335,100 +1431,151 @@ body{
 
             <div
                 class="section-title"
-                data-hy="Օրվա մանրամասները"
-                data-ru="Детали дня">
+                data-hy="Օրվա վայրերը"
+                data-ru="Места">
 
-                Օրվա մանրամասները
+                Օրվա վայրերը
 
             </div>
 
 
-            <div class="details">
+            <div class="locations">
 
 
-                <div class="detail">
+                <!-- CHURCH -->
+
+                <div class="location-card">
 
 
-                    <div class="detail-icon">
+                    <div class="location-icon">
                         ♡
                     </div>
 
 
                     <h3
-                        data-hy="Պսակադրություն"
-                        data-ru="Венчание">
+                        data-hy="Սուրբ Մարիամ Աստվածածին"
+                        data-ru="Церковь Сурб Мариам Аствацацин">
 
-                        Պսակադրություն
+                        Սուրբ Մարիամ Աստվածածին
 
                     </h3>
 
 
-                    <p>
+                    <div
+                        class="location-time"
+                        data-hy="Պսակադրություն · 16:00"
+                        data-ru="Венчание · 16:00">
 
-                        <span
-                            data-hy="Ժամը՝ 16:00"
-                            data-ru="Время: 16:00">
+                        Պսակադրություն · 16:00
 
-                            Ժամը՝ 16:00
+                    </div>
 
-                        </span>
 
-                        <br>
+                    <button
+                        class="location-toggle"
+                        onclick="toggleLocation(this)"
+                        data-hy="Տեսնել հասցեն"
+                        data-ru="Посмотреть адрес">
 
-                        <span
-                            data-hy="Վայրը՝ Ձեր եկեղեցու անունը"
-                            data-ru="Место: название церкви">
+                        Տեսնել հասցեն
 
-                            Վայրը՝ Ձեր եկեղեցու անունը
+                    </button>
 
-                        </span>
 
-                    </p>
+                    <div class="location-details">
+
+                        <div
+                            class="address"
+                            data-hy="Հասցե՝ Tambov, Kikvidze Street, 77Д"
+                            data-ru="Адрес: Tambov, Kikvidze Street, 77Д">
+
+                            Հասցե՝ Tambov, Kikvidze Street, 77Д
+
+                        </div>
+
+
+                        <a
+                            class="map-link"
+                            href="https://yandex.com/maps/org/tserkov_surb_mariam_astvatsatsin/35349517580/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-hy="Բացել Yandex Maps-ը"
+                            data-ru="Открыть Yandex Maps">
+
+                            Բացել Yandex Maps-ը
+
+                        </a>
+
+                    </div>
 
 
                 </div>
 
 
 
-                <div class="detail">
+                <!-- RESTAURANT -->
+
+                <div class="location-card">
 
 
-                    <div class="detail-icon">
+                    <div class="location-icon">
                         ✦
                     </div>
 
 
-                    <h3
-                        data-hy="Հարսանեկան խնջույք"
-                        data-ru="Свадебный банкет">
-
-                        Հարսանեկան խնջույք
-
+                    <h3>
+                        Grace Hall
                     </h3>
 
 
-                    <p>
+                    <div
+                        class="location-time"
+                        data-hy="Հարսանեկան խնջույք · 18:00"
+                        data-ru="Свадебный банкет · 18:00">
 
-                        <span
-                            data-hy="Ժամը՝ 18:00"
-                            data-ru="Время: 18:00">
+                        Հարսանեկան խնջույք · 18:00
 
-                            Ժամը՝ 18:00
+                    </div>
 
-                        </span>
 
-                        <br>
+                    <button
+                        class="location-toggle"
+                        onclick="toggleLocation(this)"
+                        data-hy="Տեսնել հասցեն"
+                        data-ru="Посмотреть адрес">
 
-                        <span
-                            data-hy="Վայրը՝ Ձեր սրահի անունը"
-                            data-ru="Место: название ресторана">
+                        Տեսնել հասցեն
 
-                            Վայրը՝ Ձեր սրահի անունը
+                    </button>
 
-                        </span>
 
-                    </p>
+                    <div class="location-details">
 
+
+                        <div
+                            class="address"
+                            data-hy="Հասցե՝ Lipetsk, Vodopyanova Street, 17А"
+                            data-ru="Адрес: Lipetsk, Vodopyanova Street, 17А">
+
+                            Հասցե՝ Lipetsk, Vodopyanova Street, 17А
+
+                        </div>
+
+
+                        <a
+                            class="map-link"
+                            href="https://yandex.com/maps/org/greys_hall/80368514301/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-hy="Բացել Yandex Maps-ը"
+                            data-ru="Открыть Yandex Maps">
+
+                            Բացել Yandex Maps-ը
+
+                        </a>
+
+
+                    </div>
 
                 </div>
 
@@ -1441,9 +1588,9 @@ body{
 
 
 
-    <!-- =====================================================
+    <!-- ==================================================
          RSVP
-    ===================================================== -->
+    ================================================== -->
 
     <section class="section rsvp">
 
@@ -1493,9 +1640,9 @@ body{
 
 
 
-    <!-- =====================================================
+    <!-- ==================================================
          FOOTER
-    ===================================================== -->
+    ================================================== -->
 
     <footer class="footer">
 
@@ -1533,31 +1680,42 @@ body{
 
     </footer>
 
+
 </div>
 
 
 
-<!-- =====================================================
+<!-- ==================================================
      MUSIC
-===================================================== -->
+================================================== -->
 
 <div class="music">
 
-    <button id="musicBtn">
+    <button
+        id="musicBtn"
+        aria-label="Music">
+
         ♪
+
     </button>
 
 </div>
 
 
 <!--
-    Երգը դիր նույն թղթապանակում
-    և անվանիր wedding-song.mp3
+    ՇԱՏ ԿԱՐԵՎՈՐ
+
+    Քո MP3 ֆայլը պետք է լինի նույն թղթապանակում,
+    ինչ index.html-ը և կոչվի՝
+
+    wedding-song.mp3
 -->
 
 <audio
     id="musicAudio"
-    loop>
+    preload="auto"
+    loop
+    playsinline>
 
     <source
         src="wedding-song.mp3"
@@ -1569,12 +1727,11 @@ body{
 
 <script>
 
-/* =========================================================
+/* ==================================================
    LANGUAGE
-========================================================= */
+================================================== */
 
 let currentLanguage = "hy";
-
 
 function setLanguage(lang){
 
@@ -1587,10 +1744,17 @@ function setLanguage(lang){
         .querySelectorAll("[data-hy]")
         .forEach(function(element){
 
-            element.textContent =
+            const translation =
                 element.getAttribute(
                     "data-" + lang
                 );
+
+            if(
+                translation !== null
+            ){
+                element.textContent =
+                    translation;
+            }
 
         });
 
@@ -1633,21 +1797,48 @@ function setLanguage(lang){
 }
 
 
-/* =========================================================
-   OPEN ENVELOPE
-========================================================= */
+/* ==================================================
+   ENVELOPE + MUSIC
+================================================== */
 
 const envelope =
-    document.getElementById("envelope");
+    document.getElementById(
+        "envelope"
+    );
 
 const envelopePage =
-    document.getElementById("envelopePage");
+    document.getElementById(
+        "envelopePage"
+    );
 
 const main =
-    document.getElementById("main");
+    document.getElementById(
+        "main"
+    );
+
+const music =
+    document.getElementById(
+        "musicAudio"
+    );
+
+const musicBtn =
+    document.getElementById(
+        "musicBtn"
+    );
 
 let opened = false;
 
+let playing = false;
+
+
+/*
+   Հենց հյուրի click-ի ընթացքում
+   փորձում ենք միացնել երաժշտությունը։
+
+   Սա կարևոր է, որովհետև browser-ները
+   սովորաբար թույլ չեն տալիս երաժշտություն
+   autoplay անել առանց user interaction-ի։
+*/
 
 envelope.addEventListener(
     "click",
@@ -1660,30 +1851,59 @@ envelope.addEventListener(
         opened = true;
 
 
-        /* open */
+        /* OPEN ENVELOPE */
 
-        envelope.classList.add("open");
+        envelope.classList.add(
+            "open"
+        );
+
+
+        /* START MUSIC */
+
+        music.volume = 0.55;
+
+        music
+            .play()
+            .then(function(){
+
+                playing = true;
+
+                musicBtn.innerHTML =
+                    "❚❚";
+
+            })
+            .catch(function(error){
+
+                /*
+                   Եթե mp3 ֆայլի անունը սխալ է
+                   կամ ֆայլը չկա,
+                   մյուս ծրագիրը միևնույն է
+                   շարունակում է աշխատել։
+                */
+
+                console.log(
+                    "Music could not start:",
+                    error
+                );
+
+            });
 
 
         /*
-           թողնում ենք հյուրին տեսնել
-           բացված ծրարը
+           2.1 վայրկյան թողնում ենք,
+           որ ծրարի բացվելը տեսանելի լինի։
         */
 
         setTimeout(
             function(){
 
-                /*
-                   fade first page
-                */
+                envelopePage
+                    .classList
+                    .add("hide");
 
-                envelopePage.classList.add("hide");
-
-                /*
-                   show second page
-                */
-
-                main.classList.add("show");
+                main
+                    .classList
+                    .add("show");
 
                 window.scrollTo(
                     0,
@@ -1691,25 +1911,16 @@ envelope.addEventListener(
                 );
 
             },
-            1900
+            2100
         );
 
     }
 );
 
 
-/* =========================================================
-   MUSIC
-========================================================= */
-
-const musicBtn =
-    document.getElementById("musicBtn");
-
-const music =
-    document.getElementById("musicAudio");
-
-let playing = false;
-
+/* ==================================================
+   MUSIC BUTTON
+================================================== */
 
 musicBtn.addEventListener(
     "click",
@@ -1717,14 +1928,16 @@ musicBtn.addEventListener(
 
         if(!playing){
 
+            music.volume = 0.55;
+
             music
                 .play()
                 .then(function(){
 
+                    playing = true;
+
                     musicBtn.innerHTML =
                         "❚❚";
-
-                    playing = true;
 
                 })
                 .catch(function(){
@@ -1732,9 +1945,9 @@ musicBtn.addEventListener(
                     alert(
                         currentLanguage === "hy"
                         ?
-                        "Երաժշտությունը հնարավոր չէ միացնել։"
+                        "Ստուգիր, որ wedding-song.mp3 ֆայլը դրված է index.html-ի կողքին։"
                         :
-                        "Не удалось включить музыку."
+                        "Проверьте, что файл wedding-song.mp3 находится рядом с index.html."
                     );
 
                 });
@@ -1743,15 +1956,76 @@ musicBtn.addEventListener(
 
             music.pause();
 
+            playing = false;
+
             musicBtn.innerHTML =
                 "♪";
-
-            playing = false;
 
         }
 
     }
 );
+
+
+/* ==================================================
+   LOCATION REVEAL
+================================================== */
+
+function toggleLocation(button){
+
+    const card =
+        button.closest(
+            ".location-card"
+        );
+
+
+    card.classList.toggle(
+        "open"
+    );
+
+
+    const textHy =
+        button.getAttribute(
+            "data-hy"
+        );
+
+    const textRu =
+        button.getAttribute(
+            "data-ru"
+        );
+
+
+    if(
+        card.classList.contains("open")
+    ){
+
+        button.textContent =
+            currentLanguage === "hy"
+            ?
+            "Թաքցնել հասցեն"
+            :
+            "Скрыть адрес";
+
+    }else{
+
+        button.textContent =
+            currentLanguage === "hy"
+            ?
+            textHy
+            :
+            textRu;
+
+    }
+
+}
+
+
+/* ==================================================
+   LANGUAGE FIX FOR OPEN LOCATION BUTTONS
+================================================== */
+
+const originalSetLanguage =
+    setLanguage;
 
 </script>
 
