@@ -167,9 +167,6 @@ body{
     z-index:1;
 }
 
-
-/* subtle paper texture */
-
 .envelope-back::after{
     content:"";
 
@@ -322,7 +319,7 @@ body{
 
 
 /* ==================================================
-   TOP FLAP
+   TOP FLAP — HALF OPEN
 ================================================== */
 
 .top-flap{
@@ -350,10 +347,18 @@ body{
 
     transform-origin:top center;
 
+    /*
+       Սկզբում ծրարը մի փոքր բաց է։
+       Սա ստեղծում է կիսաբաց ծրարի տեսք։
+    */
+    transform:rotateX(-18deg);
+
     z-index:8;
 
     transition:
         transform 1.45s cubic-bezier(.77,0,.18,1);
+
+    backface-visibility:hidden;
 }
 
 
@@ -843,7 +848,9 @@ body{
 }
 
 
-/* address hidden */
+/* ==================================================
+   ADDRESS HIDDEN
+================================================== */
 
 .location-details{
     overflow:hidden;
@@ -1080,6 +1087,10 @@ body{
     .footer-names{
         font-size:46px;
     }
+
+    .location-card h3{
+        font-size:28px;
+    }
 }
 
 </style>
@@ -1097,8 +1108,6 @@ body{
     class="envelope-page"
     id="envelopePage">
 
-
-    <!-- LANGUAGE -->
 
     <div class="language">
 
@@ -1239,12 +1248,9 @@ body{
 
 
 
-    <!-- ==================================================
-         HERO
-    ================================================== -->
+    <!-- HERO -->
 
     <section class="hero">
-
 
         <div class="leaf"></div>
         <div class="leaf"></div>
@@ -1255,7 +1261,6 @@ body{
 
 
         <div class="hero-content">
-
 
             <div
                 class="pre-title"
@@ -1269,7 +1274,6 @@ body{
 
             <div class="names">
 
-
                 <span
                     data-hy="Հարություն"
                     data-ru="Арутюн">
@@ -1278,11 +1282,9 @@ body{
 
                 </span>
 
-
                 <span class="amp">
                     &
                 </span>
-
 
                 <span
                     data-hy="Մանե"
@@ -1291,7 +1293,6 @@ body{
                     Մանե
 
                 </span>
-
 
             </div>
 
@@ -1317,22 +1318,17 @@ body{
 
             </div>
 
-
         </div>
 
     </section>
 
 
 
-    <!-- ==================================================
-         OUR DAY
-    ================================================== -->
+    <!-- OUR DAY -->
 
     <section class="section">
 
-
         <div class="section-inner">
-
 
             <div
                 class="section-title"
@@ -1360,26 +1356,19 @@ body{
 
             </div>
 
-
         </div>
 
     </section>
 
 
 
-    <!-- ==================================================
-         DATE
-    ================================================== -->
+    <!-- DATE -->
 
-    <section
-        class="section date-section">
-
+    <section class="section date-section">
 
         <div class="section-inner">
 
-
             <div class="date-card">
-
 
                 <div
                     class="pre-title"
@@ -1410,7 +1399,6 @@ body{
                     2026
                 </div>
 
-
             </div>
 
         </div>
@@ -1419,15 +1407,11 @@ body{
 
 
 
-    <!-- ==================================================
-         LOCATIONS
-    ================================================== -->
+    <!-- LOCATIONS -->
 
     <section class="section">
 
-
         <div class="section-inner">
-
 
             <div
                 class="section-title"
@@ -1446,11 +1430,12 @@ body{
 
                 <div class="location-card">
 
-
                     <div class="location-icon">
                         ♡
                     </div>
 
+
+                    <!-- ԵԿԵՂԵՑՈՒ ԱՆՈՒՆԸ ՄՆՈՒՄ Է ՏԵՍԱՆԵԼԻ -->
 
                     <h3
                         data-hy="Սուրբ Մարիամ Աստվածածին"
@@ -1484,12 +1469,14 @@ body{
 
                     <div class="location-details">
 
+                        <!-- ՀԱՍՑԵՆ ՍԿԶԲՈՒՄ ՉԻ ԵՐԵՎՈՒՄ -->
+
                         <div
                             class="address"
-                            data-hy="Հասցե՝ Tambov, Kikvidze Street, 77Д"
-                            data-ru="Адрес: Tambov, Kikvidze Street, 77Д">
+                            data-hy="Հասցեն բացելուց հետո կարող եք անցնել քարտեզին։"
+                            data-ru="После открытия адреса Вы можете перейти к карте.">
 
-                            Հասցե՝ Tambov, Kikvidze Street, 77Д
+                            Հասցեն բացելուց հետո կարող եք անցնել քարտեզին։
 
                         </div>
 
@@ -1508,7 +1495,6 @@ body{
 
                     </div>
 
-
                 </div>
 
 
@@ -1517,14 +1503,19 @@ body{
 
                 <div class="location-card">
 
-
                     <div class="location-icon">
                         ✦
                     </div>
 
 
-                    <h3>
+                    <!-- ՌԵՍՏՈՐԱՆԻ ԱՆՈՒՆԸ ՄՆՈՒՄ Է ՏԵՍԱՆԵԼԻ -->
+
+                    <h3
+                        data-hy="Grace Hall"
+                        data-ru="Grace Hall">
+
                         Grace Hall
+
                     </h3>
 
 
@@ -1551,13 +1542,12 @@ body{
 
                     <div class="location-details">
 
-
                         <div
                             class="address"
-                            data-hy="Հասցե՝ Lipetsk, Vodopyanova Street, 17А"
-                            data-ru="Адрес: Lipetsk, Vodopyanova Street, 17А">
+                            data-hy="Հասցեն բացելուց հետո կարող եք անցնել քարտեզին։"
+                            data-ru="После открытия адреса Вы можете перейти к карте.">
 
-                            Հասցե՝ Lipetsk, Vodopyanova Street, 17А
+                            Հասցեն բացելուց հետո կարող եք անցնել քարտեզին։
 
                         </div>
 
@@ -1574,7 +1564,6 @@ body{
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -1588,15 +1577,11 @@ body{
 
 
 
-    <!-- ==================================================
-         RSVP
-    ================================================== -->
+    <!-- RSVP -->
 
     <section class="section rsvp">
 
-
         <div class="section-inner">
-
 
             <div
                 class="section-title"
@@ -1633,19 +1618,15 @@ body{
 
             </a>
 
-
         </div>
 
     </section>
 
 
 
-    <!-- ==================================================
-         FOOTER
-    ================================================== -->
+    <!-- FOOTER -->
 
     <footer class="footer">
-
 
         <div class="footer-names">
 
@@ -1677,7 +1658,6 @@ body{
 
         </p>
 
-
     </footer>
 
 
@@ -1703,10 +1683,10 @@ body{
 
 
 <!--
-    ՇԱՏ ԿԱՐԵՎՈՐ
+    Երաժշտության ֆայլը պետք է լինի
+    index.html-ի ՆՈՒՅՆ թղթապանակում։
 
-    Քո MP3 ֆայլը պետք է լինի նույն թղթապանակում,
-    ինչ index.html-ը և կոչվի՝
+    Ֆայլի անունը՝
 
     wedding-song.mp3
 -->
@@ -1733,6 +1713,7 @@ body{
 
 let currentLanguage = "hy";
 
+
 function setLanguage(lang){
 
     currentLanguage = lang;
@@ -1749,15 +1730,17 @@ function setLanguage(lang){
                     "data-" + lang
                 );
 
-            if(
-                translation !== null
-            ){
+            if(translation !== null){
+
                 element.textContent =
                     translation;
+
             }
 
         });
 
+
+    /* LANGUAGE BUTTONS */
 
     document
         .getElementById("introHy")
@@ -1767,7 +1750,6 @@ function setLanguage(lang){
             lang === "hy"
         );
 
-
     document
         .getElementById("introRu")
         .classList
@@ -1775,7 +1757,6 @@ function setLanguage(lang){
             "active",
             lang === "ru"
         );
-
 
     document
         .getElementById("mainHy")
@@ -1785,7 +1766,6 @@ function setLanguage(lang){
             lang === "hy"
         );
 
-
     document
         .getElementById("mainRu")
         .classList
@@ -1794,11 +1774,51 @@ function setLanguage(lang){
             lang === "ru"
         );
 
+
+    /* LOCATION BUTTONS */
+
+    document
+        .querySelectorAll(".location-card")
+        .forEach(function(card){
+
+            const button =
+                card.querySelector(
+                    ".location-toggle"
+                );
+
+            if(!button){
+                return;
+            }
+
+            if(
+                card.classList.contains("open")
+            ){
+
+                button.textContent =
+                    lang === "hy"
+                    ?
+                    "Թաքցնել հասցեն"
+                    :
+                    "Скрыть адрес";
+
+            }else{
+
+                button.textContent =
+                    lang === "hy"
+                    ?
+                    "Տեսնել հասցեն"
+                    :
+                    "Посмотреть адрес";
+
+            }
+
+        });
+
 }
 
 
 /* ==================================================
-   ENVELOPE + MUSIC
+   ELEMENTS
 ================================================== */
 
 const envelope =
@@ -1826,19 +1846,50 @@ const musicBtn =
         "musicBtn"
     );
 
-let opened = false;
 
+let opened = false;
 let playing = false;
 
 
-/*
-   Հենց հյուրի click-ի ընթացքում
-   փորձում ենք միացնել երաժշտությունը։
+/* ==================================================
+   MUSIC FUNCTIONS
+================================================== */
 
-   Սա կարևոր է, որովհետև browser-ները
-   սովորաբար թույլ չեն տալիս երաժշտություն
-   autoplay անել առանց user interaction-ի։
-*/
+function startMusic(){
+
+    music.volume = 0.55;
+
+    const promise =
+        music.play();
+
+    if(promise !== undefined){
+
+        promise
+            .then(function(){
+
+                playing = true;
+
+                musicBtn.innerHTML =
+                    "❚❚";
+
+            })
+            .catch(function(error){
+
+                console.log(
+                    "Music could not start:",
+                    error
+                );
+
+            });
+
+    }
+
+}
+
+
+/* ==================================================
+   ENVELOPE OPEN
+================================================== */
 
 envelope.addEventListener(
     "click",
@@ -1851,47 +1902,21 @@ envelope.addEventListener(
         opened = true;
 
 
-        /* OPEN ENVELOPE */
+        /* OPEN */
 
         envelope.classList.add(
             "open"
         );
 
 
-        /* START MUSIC */
+        /* MUSIC */
 
-        music.volume = 0.55;
-
-        music
-            .play()
-            .then(function(){
-
-                playing = true;
-
-                musicBtn.innerHTML =
-                    "❚❚";
-
-            })
-            .catch(function(error){
-
-                /*
-                   Եթե mp3 ֆայլի անունը սխալ է
-                   կամ ֆայլը չկա,
-                   մյուս ծրագիրը միևնույն է
-                   շարունակում է աշխատել։
-                */
-
-                console.log(
-                    "Music could not start:",
-                    error
-                );
-
-            });
+        startMusic();
 
 
         /*
-           2.1 վայրկյան թողնում ենք,
-           որ ծրարի բացվելը տեսանելի լինի։
+           Ծրարի բացման անիմացիայից հետո
+           անցնում ենք հիմնական էջին։
         */
 
         setTimeout(
@@ -1928,29 +1953,7 @@ musicBtn.addEventListener(
 
         if(!playing){
 
-            music.volume = 0.55;
-
-            music
-                .play()
-                .then(function(){
-
-                    playing = true;
-
-                    musicBtn.innerHTML =
-                        "❚❚";
-
-                })
-                .catch(function(){
-
-                    alert(
-                        currentLanguage === "hy"
-                        ?
-                        "Ստուգիր, որ wedding-song.mp3 ֆայլը դրված է index.html-ի կողքին։"
-                        :
-                        "Проверьте, что файл wedding-song.mp3 находится рядом с index.html."
-                    );
-
-                });
+            startMusic();
 
         }else{
 
@@ -1962,6 +1965,22 @@ musicBtn.addEventListener(
                 "♪";
 
         }
+
+    }
+);
+
+
+/* ==================================================
+   MUSIC ERROR
+================================================== */
+
+music.addEventListener(
+    "error",
+    function(){
+
+        console.log(
+            "wedding-song.mp3 was not found."
+        );
 
     }
 );
@@ -1984,17 +2003,6 @@ function toggleLocation(button){
     );
 
 
-    const textHy =
-        button.getAttribute(
-            "data-hy"
-        );
-
-    const textRu =
-        button.getAttribute(
-            "data-ru"
-        );
-
-
     if(
         card.classList.contains("open")
     ){
@@ -2011,21 +2019,13 @@ function toggleLocation(button){
         button.textContent =
             currentLanguage === "hy"
             ?
-            textHy
+            "Տեսնել հասցեն"
             :
-            textRu;
+            "Посмотреть адрес";
 
     }
 
 }
-
-
-/* ==================================================
-   LANGUAGE FIX FOR OPEN LOCATION BUTTONS
-================================================== */
-
-const originalSetLanguage =
-    setLanguage;
 
 </script>
 
