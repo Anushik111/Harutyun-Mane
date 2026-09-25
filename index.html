@@ -8,9 +8,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -23,29 +25,33 @@ html{
 
 body{
     background:#f5f0e8;
-    color:#263c47;
+    color:#2b404a;
     font-family:'Montserrat',sans-serif;
     overflow-x:hidden;
 }
 
-/* =====================================
-   OPENING
-===================================== */
+
+/* =====================================================
+   OPENING SCREEN
+===================================================== */
 
 .opening{
     position:fixed;
     inset:0;
     z-index:99999;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     background:
         radial-gradient(
             circle at center,
-            #fffdf9 0%,
-            #f7f1e8 55%,
-            #e8ddce 100%
+            #fffefa 0%,
+            #f8f2e9 48%,
+            #e7dccd 100%
         );
+
     transition:
         opacity 1.2s ease,
         visibility 1.2s ease;
@@ -57,95 +63,167 @@ body{
     pointer-events:none;
 }
 
-.opening-wrap{
-    width:min(92vw,760px);
+.opening-content{
+    width:min(94vw,760px);
     text-align:center;
 }
 
 .opening-title{
     font-family:'Cormorant Garamond',serif;
+
     font-size:18px;
     letter-spacing:6px;
-    color:#827766;
+
+    color:#847865;
+
     text-transform:uppercase;
-    margin-bottom:42px;
+
+    margin-bottom:40px;
 }
 
-/* =====================================
-   REALISTIC CLOSED ENVELOPE
-===================================== */
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
 
 .envelope{
     position:relative;
-    width:min(88vw,650px);
-    aspect-ratio:1.65 / 1;
+
+    width:min(90vw,650px);
+
+    aspect-ratio:1.62 / 1;
+
     margin:auto;
+
     cursor:pointer;
 
-    filter:
-        drop-shadow(0 30px 35px rgba(54,43,29,.20));
-
     perspective:1600px;
+
+    filter:
+        drop-shadow(
+            0 28px 35px rgba(55,43,28,.20)
+        );
 }
 
-/* entire paper */
 
-.envelope-paper{
+/* envelope base */
+
+.envelope-base{
     position:absolute;
     inset:0;
+
     overflow:hidden;
-    border-radius:2px;
 
     background:
         linear-gradient(
-            135deg,
-            #f8f5ef 0%,
-            #eee8df 45%,
-            #e8dfd3 100%
+            145deg,
+            #faf7f2 0%,
+            #eee7dc 48%,
+            #dfd4c4 100%
         );
 
-    border:1px solid rgba(115,98,77,.18);
+    border:
+        1px solid rgba(105,88,67,.15);
+
+    border-radius:3px;
 }
 
-/* paper texture */
 
-.envelope-paper::after{
+/* subtle paper texture */
+
+.envelope-base::after{
     content:"";
+
     position:absolute;
     inset:0;
 
-    opacity:.23;
+    pointer-events:none;
 
-    background-image:
+    opacity:.2;
+
+    background:
         repeating-linear-gradient(
             0deg,
-            rgba(80,65,45,.025) 0px,
-            rgba(80,65,45,.025) 1px,
+            rgba(70,55,35,.025) 0px,
+            rgba(70,55,35,.025) 1px,
             transparent 1px,
             transparent 4px
         );
-
-    pointer-events:none;
 }
 
-/* =====================================
-   SIDE FOLDS
-===================================== */
+
+/* =====================================================
+   INSIDE CARD
+===================================================== */
+
+.inner-card{
+    position:absolute;
+
+    z-index:2;
+
+    left:8%;
+    top:7%;
+
+    width:84%;
+    height:87%;
+
+    background:#fffdfa;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 8px 25px rgba(45,35,23,.14);
+
+    transform:translateY(22px);
+
+    transition:
+        transform 1.45s cubic-bezier(.72,0,.18,1);
+}
+
+.inner-small{
+    font-size:9px;
+    letter-spacing:4px;
+
+    color:#a0917e;
+
+    text-transform:uppercase;
+}
+
+.inner-names{
+    margin-top:12px;
+
+    font-family:'Parisienne',cursive;
+
+    font-size:52px;
+
+    color:#304953;
+}
+
+
+/* =====================================================
+   LEFT FOLD
+===================================================== */
 
 .left-fold{
     position:absolute;
-    z-index:3;
+
+    z-index:4;
+
     left:0;
     bottom:0;
 
-    width:53%;
+    width:52%;
     height:100%;
 
     background:
         linear-gradient(
             145deg,
-            #f5f0e8,
-            #e4dacb
+            #f9f5ef,
+            #e2d7c8
         );
 
     clip-path:
@@ -155,23 +233,31 @@ body{
             0 100%
         );
 
-    border-right:1px solid rgba(95,78,58,.10);
+    border-right:
+        1px solid rgba(90,72,52,.10);
 }
+
+
+/* =====================================================
+   RIGHT FOLD
+===================================================== */
 
 .right-fold{
     position:absolute;
-    z-index:3;
+
+    z-index:4;
+
     right:0;
     bottom:0;
 
-    width:53%;
+    width:52%;
     height:100%;
 
     background:
         linear-gradient(
             215deg,
-            #f5f0e8,
-            #e4dacb
+            #f9f5ef,
+            #e2d7c8
         );
 
     clip-path:
@@ -181,16 +267,20 @@ body{
             100% 100%
         );
 
-    border-left:1px solid rgba(95,78,58,.10);
+    border-left:
+        1px solid rgba(90,72,52,.10);
 }
 
-/* =====================================
+
+/* =====================================================
    BOTTOM FLAP
-===================================== */
+===================================================== */
 
 .bottom-flap{
     position:absolute;
-    z-index:4;
+
+    z-index:5;
+
     left:0;
     bottom:0;
 
@@ -201,83 +291,42 @@ body{
         linear-gradient(
             145deg,
             #eee7dd,
-            #dcd0bf
+            #d9ccbb
         );
 
     clip-path:
         polygon(
             0 100%,
-            50% 20%,
+            50% 19%,
             100% 100%
         );
 
-    border-top:1px solid rgba(105,85,62,.13);
+    border-top:
+        1px solid rgba(95,76,54,.12);
 }
 
-/* =====================================
-   LETTER INSIDE
-===================================== */
 
-.inner-card{
-    position:absolute;
-    z-index:2;
-
-    left:8%;
-    top:8%;
-
-    width:84%;
-    height:84%;
-
-    background:#fffdfa;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:
-        0 5px 20px rgba(50,40,25,.12);
-
-    transform:translateY(22px);
-
-    transition:
-        transform 1.5s cubic-bezier(.7,0,.2,1);
-}
-
-.inner-small{
-    font-size:9px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#9b8b75;
-}
-
-.inner-names{
-    margin-top:13px;
-    font-family:'Parisienne',cursive;
-    font-size:48px;
-    color:#314953;
-}
-
-/* =====================================
+/* =====================================================
    TOP FLAP
-===================================== */
+===================================================== */
 
 .top-flap{
     position:absolute;
-    z-index:8;
+
+    z-index:10;
 
     left:0;
     top:0;
 
     width:100%;
-    height:67%;
+    height:68%;
 
     background:
         linear-gradient(
             135deg,
-            #fbf8f3 0%,
-            #eee6db 65%,
-            #e3d7c7 100%
+            #fcfaf6 0%,
+            #f0e8dd 55%,
+            #dfd3c2 100%
         );
 
     clip-path:
@@ -294,37 +343,49 @@ body{
 
     backface-visibility:hidden;
 
-    border-bottom:1px solid rgba(100,82,59,.14);
+    border-bottom:
+        1px solid rgba(90,72,52,.14);
 }
 
-/* =====================================
-   REAL STAMP IMAGE
-===================================== */
 
-.stamp{
+/* =====================================================
+   REAL STAMP
+===================================================== */
+
+.stamp-wrap{
     position:absolute;
 
-    z-index:20;
+    z-index:50;
 
     left:50%;
     top:53%;
 
-    width:145px;
-    height:145px;
+    width:155px;
+    height:155px;
 
-    object-fit:cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     transform:
         translate(-50%,-50%)
         rotate(-4deg);
 
-    border-radius:50%;
+    pointer-events:none;
 
-    /*
-       Եթե նկարի սպիտակ ֆոնը կա,
-       envelope-ի սպիտակի հետ գրեթե չի
-       տարբերվի։
-    */
+    transition:
+        opacity .5s ease,
+        transform .65s ease;
+}
+
+
+.stamp{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
 
     mix-blend-mode:multiply;
 
@@ -332,79 +393,84 @@ body{
         contrast(1.08)
         saturate(1.08)
         drop-shadow(
-            0 9px 8px rgba(64,45,20,.23)
+            0 9px 8px rgba(67,45,22,.25)
         );
 
     transition:
-        transform .55s ease,
-        opacity .55s ease;
+        transform .45s ease;
 }
 
-/* slight natural movement */
+
+/* stamp subtle movement */
 
 .envelope:hover .stamp{
     transform:
-        translate(-50%,-50%)
-        rotate(-2deg)
-        scale(1.025);
+        scale(1.025)
+        rotate(1deg);
 }
 
-/* =====================================
-   OPEN ANIMATION
-===================================== */
+
+/* =====================================================
+   OPENING ANIMATION
+===================================================== */
 
 .envelope.open .top-flap{
     transform:rotateX(180deg);
 }
 
-.envelope.open .stamp{
+.envelope.open .stamp-wrap{
     opacity:0;
+
     transform:
         translate(-50%,-50%)
-        rotate(8deg)
-        scale(.7);
+        scale(.65)
+        rotate(12deg);
 }
 
 .envelope.open .inner-card{
     transform:translateY(-38%);
 }
 
-/* =====================================
-   OPEN TEXT
-===================================== */
 
-.open-label{
+/* =====================================================
+   OPEN TEXT
+===================================================== */
+
+.open-text{
     margin-top:35px;
 
     font-family:'Cormorant Garamond',serif;
-    font-size:25px;
 
-    color:#344b55;
+    font-size:24px;
 
     letter-spacing:1px;
+
+    color:#344b55;
 }
 
 .open-hint{
     margin-top:8px;
 
     font-size:9px;
+
     letter-spacing:4px;
 
-    text-transform:uppercase;
+    color:#9b8d7b;
 
-    color:#998b79;
+    text-transform:uppercase;
 }
 
-/* =====================================
+
+/* =====================================================
    MAIN
-===================================== */
+===================================================== */
 
 .main{
     opacity:0;
     visibility:hidden;
 
     transition:
-        opacity 1.3s ease;
+        opacity 1.2s ease;
 }
 
 .main.visible{
@@ -412,15 +478,18 @@ body{
     visibility:visible;
 }
 
-/* =====================================
+
+/* =====================================================
    HERO
-===================================== */
+===================================================== */
 
 .hero{
     min-height:100vh;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
@@ -431,38 +500,44 @@ body{
 
 .hero-image{
     width:min(88vw,520px);
-    height:min(105vw,650px);
+
+    height:min(108vw,650px);
 
     object-fit:cover;
 
     margin-bottom:42px;
 
     box-shadow:
-        0 25px 55px rgba(42,35,26,.16);
+        0 25px 55px rgba(42,35,26,.15);
 }
 
 .eyebrow{
     font-size:10px;
+
     letter-spacing:5px;
+
     text-transform:uppercase;
-    color:#968772;
+
+    color:#94846e;
 }
 
 .names{
     margin-top:17px;
 
     font-family:'Parisienne',cursive;
-    font-size:clamp(65px,9vw,110px);
+
+    font-size:
+        clamp(65px,9vw,110px);
 
     line-height:1;
 
     font-weight:400;
 
-    color:#29424d;
+    color:#29434e;
 }
 
-.line{
-    width:60px;
+.divider{
+    width:62px;
     height:1px;
 
     background:#b9a78d;
@@ -477,20 +552,21 @@ body{
 
     letter-spacing:5px;
 
-    color:#6d6b63;
+    color:#706e66;
 }
 
-/* =====================================
-   TEXT
-===================================== */
 
-.text-section{
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro{
     padding:120px 20px;
 
     text-align:center;
 }
 
-.text-section h2{
+.intro h2{
     font-family:'Cormorant Garamond',serif;
 
     font-size:54px;
@@ -500,7 +576,7 @@ body{
     margin-bottom:25px;
 }
 
-.text-section p{
+.intro p{
     max-width:620px;
 
     margin:auto;
@@ -509,30 +585,37 @@ body{
 
     line-height:2;
 
-    color:#77766f;
+    color:#77756f;
 }
 
-/* =====================================
+
+/* =====================================================
    PHOTOS
-===================================== */
+===================================================== */
 
 .photos{
     width:min(1100px,92vw);
+
     margin:auto;
 
-    padding:0 0 130px;
+    padding:
+        0
+        0
+        130px;
 }
 
 .photo-grid{
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:22px;
 }
 
 .photo-grid img{
     width:100%;
+
     height:570px;
 
     object-fit:cover;
@@ -545,9 +628,10 @@ body{
     margin-top:70px;
 }
 
-/* =====================================
+
+/* =====================================================
    EVENTS
-===================================== */
+===================================================== */
 
 .events{
     padding:120px 20px;
@@ -559,6 +643,7 @@ body{
 
 .events-inner{
     width:min(950px,92vw);
+
     margin:auto;
 }
 
@@ -575,13 +660,15 @@ body{
 .event-grid{
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:25px;
 }
 
 .event-card{
-    background:rgba(255,255,255,.55);
+    background:
+        rgba(255,255,255,.55);
 
     padding:48px 25px;
 
@@ -630,14 +717,16 @@ body{
 
     letter-spacing:2px;
 
-    border-bottom:1px solid #a8aaa4;
+    border-bottom:
+        1px solid #a8aaa4;
 
     padding-bottom:4px;
 }
 
-/* =====================================
+
+/* =====================================================
    COUNTDOWN
-===================================== */
+===================================================== */
 
 .countdown-section{
     padding:130px 20px;
@@ -687,9 +776,10 @@ body{
     color:#978a78;
 }
 
-/* =====================================
+
+/* =====================================================
    RSVP
-===================================== */
+===================================================== */
 
 .rsvp{
     padding:120px 20px;
@@ -729,11 +819,11 @@ body{
     text-align:left;
 }
 
-.form-row{
+.form-group{
     margin-bottom:18px;
 }
 
-.form-row label{
+.form-group label{
     display:block;
 
     font-size:9px;
@@ -745,15 +835,16 @@ body{
     color:#d8d0c4;
 }
 
-.form-row input,
-.form-row select{
+.form-group input,
+.form-group select{
     width:100%;
 
     height:51px;
 
     padding:0 15px;
 
-    background:rgba(255,255,255,.06);
+    background:
+        rgba(255,255,255,.06);
 
     border:
         1px solid rgba(255,255,255,.28);
@@ -765,7 +856,7 @@ body{
     font-family:'Montserrat',sans-serif;
 }
 
-.form-row select option{
+.form-group select option{
     color:#222;
 }
 
@@ -787,11 +878,18 @@ body{
     letter-spacing:3px;
 
     cursor:pointer;
+
+    transition:.25s ease;
 }
 
-/* =====================================
+.submit:hover{
+    background:white;
+}
+
+
+/* =====================================================
    FOOTER
-===================================== */
+===================================================== */
 
 .footer{
     padding:100px 20px 45px;
@@ -833,41 +931,50 @@ body{
 
 .contacts a{
     color:inherit;
+
     text-decoration:none;
 }
 
-/* =====================================
+
+/* =====================================================
    MOBILE
-===================================== */
+===================================================== */
 
 @media(max-width:700px){
 
     .opening-title{
-        font-size:12px;
+        font-size:11px;
+
         letter-spacing:4px;
-        margin-bottom:28px;
+
+        margin-bottom:27px;
     }
 
     .envelope{
-        width:91vw;
+        width:92vw;
     }
 
-    .stamp{
-        width:105px;
-        height:105px;
+    .stamp-wrap{
+        width:108px;
+        height:108px;
     }
 
-    .open-label{
+    .open-text{
         font-size:21px;
     }
 
     .hero{
-        padding:65px 15px 90px;
+        padding:
+            65px
+            15px
+            90px;
     }
 
     .hero-image{
         width:92vw;
+
         height:112vw;
+
         max-height:620px;
     }
 
@@ -875,28 +982,32 @@ body{
         font-size:66px;
     }
 
-    .text-section{
+    .intro{
         padding:85px 20px;
     }
 
-    .text-section h2{
+    .intro h2{
         font-size:43px;
     }
 
     .photos{
         width:94vw;
+
         padding-bottom:90px;
     }
 
     .photo-grid{
         grid-template-columns:1fr;
+
         gap:15px;
     }
 
     .photo-grid img,
     .photo-grid img:nth-child(2){
         height:125vw;
+
         max-height:650px;
+
         margin-top:0;
     }
 
@@ -930,6 +1041,7 @@ body{
 
     .count span{
         font-size:6px;
+
         letter-spacing:1.5px;
     }
 
@@ -953,19 +1065,21 @@ body{
         font-size:30px;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- =====================================
-     ENVELOPE
-===================================== -->
+<!-- =====================================================
+     ENVELOPE OPENING
+===================================================== -->
 
 <div class="opening" id="opening">
 
-    <div class="opening-wrap">
+    <div class="opening-content">
 
         <div class="opening-title">
             A special invitation
@@ -974,11 +1088,14 @@ body{
 
         <div class="envelope" id="envelope">
 
-            <!-- PAPER -->
-            <div class="envelope-paper"></div>
+
+            <!-- ENVELOPE PAPER -->
+
+            <div class="envelope-base"></div>
 
 
-            <!-- CARD INSIDE -->
+            <!-- INVITATION CARD INSIDE -->
+
             <div class="inner-card">
 
                 <div class="inner-small">
@@ -993,30 +1110,39 @@ body{
 
 
             <!-- SIDE FOLDS -->
+
             <div class="left-fold"></div>
 
             <div class="right-fold"></div>
 
 
             <!-- BOTTOM FLAP -->
+
             <div class="bottom-flap"></div>
 
 
             <!-- TOP FLAP -->
+
             <div class="top-flap"></div>
 
 
-            <!-- REAL STAMP IMAGE -->
-            <img
-                src="images/stamp.png"
-                class="stamp"
-                alt="Wax seal"
-            >
+            <!-- YOUR REAL STAMP -->
+
+            <div class="stamp-wrap">
+
+                <img
+                    src="images/stamp.png"
+                    class="stamp"
+                    alt="Wax seal"
+                >
+
+            </div>
+
 
         </div>
 
 
-        <div class="open-label">
+        <div class="open-text">
             Սեղմեք ծրարի վրա
         </div>
 
@@ -1029,9 +1155,10 @@ body{
 </div>
 
 
-<!-- =====================================
+
+<!-- =====================================================
      MAIN INVITATION
-===================================== -->
+===================================================== -->
 
 <main class="main" id="main">
 
@@ -1041,8 +1168,8 @@ body{
     <section class="hero">
 
         <img
-            class="hero-image"
             src="images/couple.jpg"
+            class="hero-image"
             alt="Ա & Մ"
         >
 
@@ -1054,7 +1181,7 @@ body{
             Ա & Մ
         </h1>
 
-        <div class="line"></div>
+        <div class="divider"></div>
 
         <div class="date">
             15 · 07 · 2027
@@ -1063,15 +1190,16 @@ body{
     </section>
 
 
-    <!-- TEXT -->
 
-    <section class="text-section">
+    <!-- INTRO -->
+
+    <section class="intro">
 
         <h2>
             Սիրով հրավիրում ենք
         </h2>
 
-        <div class="line"></div>
+        <div class="divider"></div>
 
         <p>
             Մեր կյանքի ամենագեղեցիկ օրը ցանկանում ենք
@@ -1080,6 +1208,7 @@ body{
         </p>
 
     </section>
+
 
 
     <!-- PHOTOS -->
@@ -1103,6 +1232,7 @@ body{
     </section>
 
 
+
     <!-- EVENTS -->
 
     <section class="events">
@@ -1112,6 +1242,7 @@ body{
             <h2 class="events-title">
                 Օրվա ընթացքը
             </h2>
+
 
             <div class="event-grid">
 
@@ -1139,6 +1270,7 @@ body{
                     </a>
 
                 </div>
+
 
 
                 <div class="event-card">
@@ -1173,6 +1305,7 @@ body{
     </section>
 
 
+
     <!-- COUNTDOWN -->
 
     <section class="countdown-section">
@@ -1181,31 +1314,66 @@ body{
             Մինչև մեր օրը
         </h2>
 
+
         <div class="countdown">
 
-            <div class="count">
-                <strong id="days">00</strong>
-                <span>ՕՐ</span>
-            </div>
 
             <div class="count">
-                <strong id="hours">00</strong>
-                <span>ԺԱՄ</span>
+
+                <strong id="days">
+                    00
+                </strong>
+
+                <span>
+                    ՕՐ
+                </span>
+
             </div>
 
-            <div class="count">
-                <strong id="minutes">00</strong>
-                <span>ՐՈՊԵ</span>
-            </div>
 
             <div class="count">
-                <strong id="seconds">00</strong>
-                <span>ՎԱՅՐԿՅԱՆ</span>
+
+                <strong id="hours">
+                    00
+                </strong>
+
+                <span>
+                    ԺԱՄ
+                </span>
+
             </div>
+
+
+            <div class="count">
+
+                <strong id="minutes">
+                    00
+                </strong>
+
+                <span>
+                    ՐՈՊԵ
+                </span>
+
+            </div>
+
+
+            <div class="count">
+
+                <strong id="seconds">
+                    00
+                </strong>
+
+                <span>
+                    ՎԱՅՐԿՅԱՆ
+                </span>
+
+            </div>
+
 
         </div>
 
     </section>
+
 
 
     <!-- RSVP -->
@@ -1224,7 +1392,7 @@ body{
         <form class="form" id="rsvpForm">
 
 
-            <div class="form-row">
+            <div class="form-group">
 
                 <label>
                     Կկարողանա՞ք գալ
@@ -1249,7 +1417,7 @@ body{
             </div>
 
 
-            <div class="form-row">
+            <div class="form-group">
 
                 <label>
                     Անուն
@@ -1264,7 +1432,7 @@ body{
             </div>
 
 
-            <div class="form-row">
+            <div class="form-group">
 
                 <label>
                     Ազգանուն
@@ -1279,7 +1447,7 @@ body{
             </div>
 
 
-            <div class="form-row">
+            <div class="form-group">
 
                 <label>
                     Ո՞ւմ կողմից եք հրավիրված
@@ -1304,6 +1472,7 @@ body{
         </form>
 
     </section>
+
 
 
     <!-- FOOTER -->
@@ -1339,14 +1508,17 @@ body{
 
     </footer>
 
+
 </main>
+
 
 
 <script>
 
-/* =====================================
-   ENVELOPE OPEN
-===================================== */
+
+/* =====================================================
+   ENVELOPE OPENING
+===================================================== */
 
 const envelope =
     document.getElementById("envelope");
@@ -1358,37 +1530,41 @@ const main =
     document.getElementById("main");
 
 
-envelope.addEventListener("click", function(){
+envelope.addEventListener(
+    "click",
+    function(){
 
-    if(envelope.classList.contains("open")){
-        return;
+        if(
+            envelope.classList.contains("open")
+        ){
+            return;
+        }
+
+
+        envelope.classList.add("open");
+
+
+        setTimeout(
+            function(){
+
+                opening.classList.add("hide");
+
+                main.classList.add("visible");
+
+                document.body.style.overflow =
+                    "auto";
+
+            },
+            1900
+        );
+
     }
-
-    envelope.classList.add("open");
-
-
-    /*
-       First the stamp disappears,
-       then the flap opens,
-       then the invitation appears.
-    */
-
-    setTimeout(function(){
-
-        opening.classList.add("hide");
-
-        main.classList.add("visible");
-
-        document.body.style.overflow = "auto";
-
-    },1900);
-
-});
+);
 
 
-/* =====================================
+/* =====================================================
    COUNTDOWN
-===================================== */
+===================================================== */
 
 const weddingDate =
     new Date("2027-07-15T18:00:00");
@@ -1396,7 +1572,8 @@ const weddingDate =
 
 function updateCountdown(){
 
-    const now = new Date();
+    const now =
+        new Date();
 
     let difference =
         weddingDate - now;
@@ -1416,15 +1593,19 @@ function updateCountdown(){
 
     const hours =
         Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
+            (
+                difference /
+                (1000 * 60 * 60)
+            ) % 24
         );
 
 
     const minutes =
         Math.floor(
-            (difference /
-            (1000 * 60)) % 60
+            (
+                difference /
+                (1000 * 60)
+            ) % 60
         );
 
 
@@ -1458,26 +1639,33 @@ function updateCountdown(){
 
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
-/* =====================================
+/* =====================================================
    RSVP
-===================================== */
+===================================================== */
 
 document
-.getElementById("rsvpForm")
-.addEventListener("submit",function(e){
+    .getElementById("rsvpForm")
+    .addEventListener(
+        "submit",
+        function(e){
 
-    e.preventDefault();
+            e.preventDefault();
 
-    alert(
-        "Շնորհակալություն ❤️ Ձեր պատասխանը ընդունված է։"
+            alert(
+                "Շնորհակալություն ❤️ Ձեր պատասխանը ընդունված է։"
+            );
+
+        }
     );
 
-});
-
 </script>
+
 
 </body>
 </html>
