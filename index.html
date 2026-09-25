@@ -185,7 +185,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  </div>
 </div>
 
-<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+<audio id="bgMusic" preload="auto" loop playsinline>
+  <source src="./music.mp3" type="audio/mpeg">
+</audio>
 
 <main class="main" id="main">
 <section class="section hero">
@@ -229,28 +231,74 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 const envelope=document.getElementById('envelope'),opening=document.getElementById('opening'),main=document.getElementById('main');
 const bgMusic=document.getElementById('bgMusic'),musicToggle=document.getElementById('musicToggle');
 let lang='hy', musicOn=false;
-async function startMusic(){
-  if(!bgMusic)return;
-  try{
-    bgMusic.volume=0.75;
-    await bgMusic.play();
-    musicOn=true;
-    updateMusicButton();
-  }catch(e){
-    console.warn('Music could not start:',e);
-    musicOn=false;
-    updateMusicButton();
+let musicStarted=false;
+
+function startMusic(){
+  if(!bgMusic) return;
+
+  bgMusic.volume=0.75;
+  bgMusic.muted=false;
+
+  const playPromise=bgMusic.play();
+
+  if(playPromise !== undefined){
+    playPromise.then(()=>{
+      musicOn=true;
+      musicStarted=true;
+      updateMusicButton();
+    }).catch((e)=>{
+      musicOn=false;
+      updateMusicButton();
+      console.warn('Music could not start:',e);
+    });
   }
 }
+
 function stopMusic(){
   if(!bgMusic)return;
   bgMusic.pause();
   musicOn=false;
   updateMusicButton();
 }
-function updateMusicButton(){musicToggle.textContent=musicOn?'♫':'♪';musicToggle.title=lang==='hy'?(musicOn?'Անջատել երաժշտությունը':'Միացնել երաժշտությունը'):(musicOn?'Выключить музыку':'Включить музыку');}
-musicToggle.addEventListener('click',()=>musicOn?stopMusic():startMusic());
-envelope.onclick=()=>{if(envelope.classList.contains('open'))return;envelope.classList.add('open');startMusic();setTimeout(()=>{opening.classList.add('hide');main.classList.add('show')},1900)};
+
+function updateMusicButton(){
+  musicToggle.textContent=musicOn?'♫':'♪';
+  musicToggle.title=lang==='hy'
+    ?(musicOn?'Անջատել երաժշտությունը':'Միացնել երաժշտությունը')
+    :(musicOn?'Выключить музыку':'Включить музыку');
+}
+
+musicToggle.addEventListener('click',(e)=>{
+  e.preventDefault();
+  if(musicOn) stopMusic();
+  else startMusic();
+});
+
+function openInvitation(e){
+  if(e) e.preventDefault();
+  if(envelope.classList.contains('open')) return;
+
+  // Start audio directly from the user's gesture.
+  startMusic();
+
+  envelope.classList.add('open');
+
+  setTimeout(()=>{
+    opening.classList.add('hide');
+    main.classList.add('show');
+  },1900);
+}
+
+envelope.addEventListener('click',openInvitation);
+envelope.addEventListener('pointerdown',()=>{
+  if(!envelope.classList.contains('open') && !musicOn) startMusic();
+},{passive:true});
+
+bgMusic.addEventListener('error',()=>{
+  console.error('music.mp3 could not be loaded:', bgMusic.error);
+  musicOn=false;
+  updateMusicButton();
+});
 function setLang(next){
   lang=next;
   document.documentElement.lang=next==='hy'?'hy':'ru';
