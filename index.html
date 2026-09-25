@@ -99,6 +99,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  .group.full{grid-column:auto}
  .footer h2{font-size:35px}
 }
+
+.venue-image{width:150px;height:110px;margin:0 auto 14px;display:block;object-fit:cover;border-radius:18px;border:1px solid #cdbb98;box-shadow:0 10px 24px rgba(73,61,40,.12);background:#eee5d7;}
+.address{margin-top:10px;font-size:11px;line-height:1.7;color:#7c766b;}
+.music-note{font-size:10px;color:#887b68;margin-top:8px;}
 </style>
 </head>
 <body>
@@ -116,6 +120,8 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  </div>
 </div>
 
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+
 <main class="main" id="main">
 <section class="section hero">
  <div class="decor tl"><svg viewBox="0 0 100 100"><path d="M15 88C30 66 47 44 78 13"/><path d="M34 65c-10-3-16-10-18-18 10 1 17 5 21 13"/><path d="M48 51c-9-2-15-8-17-16 9 0 16 4 21 11"/><path d="M61 38c-7-2-11-8-12-15 8 1 13 4 16 10"/><path d="M51 49c11-1 18-7 23-15-10 0-18 4-23 11"/></svg></div>
@@ -132,15 +138,15 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  <h2>Օրվա ընթացքը</h2>
  <div class="grid">
   <div class="event">
-   <div class="sticker-slot"><span>Ձեր նկարը</span></div>
-   <div class="slot-note">Այստեղ կարող եք տեղադրել եկեղեցու սթիքերը</div>
+   <img class="venue-image" src="church.jpg" alt="Սուրբ Մարիամ Աստվածածին եկեղեցի">
    <div class="number">01</div><h3>Եկեղեցի</h3><p>Սուրբ Մարիամ Աստվածածին</p>
-   <a class="map" target="_blank" href="https://yandex.com/maps/org/tserkov_surb_mariam_astvatsatsin/353495175/">Բացել քարտեզը →</a>
+   <div class="address">Ռոմանոս Մելիքյան փողոց 2/10, Երևան</div>
+   <a class="map" target="_blank" href="https://yandex.com/maps/org/32216173672/">Բացել քարտեզը →</a>
   </div>
   <div class="event">
-   <div class="sticker-slot"><span>Ձեր նկարը</span></div>
-   <div class="slot-note">Այստեղ կարող եք տեղադրել ռեստորանի սթիքերը</div>
+   <img class="venue-image" src="restaurant.jpg" alt="Grace Hall">
    <div class="number">02</div><h3>Հարսանյաց հանդիսություն</h3><p>Grace Hall</p>
+   <div class="address">Վոդոպյանովայի փողոց 17Ա, Լիպեցկ</div>
    <a class="map" target="_blank" href="https://yandex.com/maps/org/greys_hall/80368514301/">Բացել քարտեզը →</a>
   </div>
  </div>
@@ -161,9 +167,8 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
    <div class="group"><label>Ազգանուն</label><input required placeholder="Ձեր ազգանունը"></div>
    <div class="group full"><label>Ո՞ւմ կողմից եք հրավիրված</label><input placeholder="Գրեք հրավիրողի անունը"></div>
    <div class="group full music-box">
-    <label>Երգ</label>
-    <input id="music" type="file" accept="audio/*">
-    <audio id="player" controls></audio>
+    <label>Երաժշտություն</label>
+    <div class="music-note">Ֆոնային երաժշտությունը կաշխատի հրավիրատոմսը բացելուց հետո։ Երգի ֆայլը պահեք <b>music.mp3</b> անունով՝ HTML ֆայլի կողքին։</div>
    </div>
   </div>
   <button class="submit" type="submit">ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ</button>
@@ -177,10 +182,13 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 </main>
 <script>
 const envelope=document.getElementById('envelope'),opening=document.getElementById('opening'),main=document.getElementById('main');
-envelope.onclick=()=>{if(envelope.classList.contains('open'))return;envelope.classList.add('open');setTimeout(()=>{opening.classList.add('hide');main.classList.add('show')},1900)};
+envelope.onclick=()=>{if(envelope.classList.contains('open'))return;envelope.classList.add('open');startMusic();setTimeout(()=>{opening.classList.add('hide');main.classList.add('show')},1900)};
 const target=new Date('2027-11-07T18:00:00');
 function tick(){let x=Math.max(0,target-new Date());document.getElementById('d').textContent=String(Math.floor(x/86400000)).padStart(2,'0');document.getElementById('h').textContent=String(Math.floor(x/3600000)%24).padStart(2,'0');document.getElementById('m').textContent=String(Math.floor(x/60000)%60).padStart(2,'0');document.getElementById('s').textContent=String(Math.floor(x/1000)%60).padStart(2,'0')}tick();setInterval(tick,1000);
-const music=document.getElementById('music'),player=document.getElementById('player');music.onchange=()=>{const file=music.files[0];if(!file)return;player.src=URL.createObjectURL(file);player.style.display='block';};
+const bgMusic=document.getElementById('bgMusic');
+function startMusic(){
+  if(bgMusic) bgMusic.play().catch(()=>{});
+}
 document.getElementById('form').onsubmit=e=>{e.preventDefault();alert('Շնորհակալություն ❤️ Ձեր պատասխանը ընդունված է։')};
 </script>
 </body></html>
