@@ -185,7 +185,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  </div>
 </div>
 
-<audio id="bgMusic" src="music.mp3?v=20260925" loop preload="auto"></audio>
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
 
 <main class="main" id="main">
 <section class="section hero">
@@ -229,8 +229,25 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 const envelope=document.getElementById('envelope'),opening=document.getElementById('opening'),main=document.getElementById('main');
 const bgMusic=document.getElementById('bgMusic'),musicToggle=document.getElementById('musicToggle');
 let lang='hy', musicOn=false;
-function startMusic(){if(!bgMusic)return;bgMusic.play().then(()=>{musicOn=true;updateMusicButton()}).catch(()=>{});}
-function stopMusic(){if(!bgMusic)return;bgMusic.pause();musicOn=false;updateMusicButton();}
+async function startMusic(){
+  if(!bgMusic)return;
+  try{
+    bgMusic.volume=0.75;
+    await bgMusic.play();
+    musicOn=true;
+    updateMusicButton();
+  }catch(e){
+    console.warn('Music could not start:',e);
+    musicOn=false;
+    updateMusicButton();
+  }
+}
+function stopMusic(){
+  if(!bgMusic)return;
+  bgMusic.pause();
+  musicOn=false;
+  updateMusicButton();
+}
 function updateMusicButton(){musicToggle.textContent=musicOn?'♫':'♪';musicToggle.title=lang==='hy'?(musicOn?'Անջատել երաժշտությունը':'Միացնել երաժշտությունը'):(musicOn?'Выключить музыку':'Включить музыку');}
 musicToggle.addEventListener('click',()=>musicOn?stopMusic():startMusic());
 envelope.onclick=()=>{if(envelope.classList.contains('open'))return;envelope.classList.add('open');startMusic();setTimeout(()=>{opening.classList.add('hide');main.classList.add('show')},1900)};
