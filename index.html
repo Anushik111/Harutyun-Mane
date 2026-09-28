@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Հարսանյաց հրավեր</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,25 +23,47 @@ html{
 
 body{
     min-height:100vh;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 28%),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,.12), transparent 30%),
-        linear-gradient(135deg,#9baec1,#8299b0);
-    color:#61758d;
-    font-family:"Manrope",sans-serif;
     overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            circle at 18% 20%,
+            rgba(255,255,255,.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 82% 75%,
+            rgba(255,255,255,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #9baec1,
+            #8299b0
+        );
+
+    color:#63778d;
+    font-family:"Manrope",sans-serif;
 }
 
-/* ---------- DECOR ---------- */
+
+/* =========================
+   BACKGROUND LIGHT
+========================= */
 
 .bg-glow{
     position:fixed;
     width:420px;
     height:420px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.08);
-    filter:blur(50px);
+
+    filter:blur(55px);
+
     pointer-events:none;
+
     animation:glowMove 9s ease-in-out infinite alternate;
 }
 
@@ -50,365 +73,709 @@ body{
 }
 
 .bg-glow.two{
+    right:-120px;
     bottom:-220px;
-    right:-100px;
+
     animation-delay:2s;
 }
 
 @keyframes glowMove{
-    from{transform:translate(0,0) scale(1)}
-    to{transform:translate(35px,25px) scale(1.12)}
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(35px,25px) scale(1.12);
+    }
 }
 
-/* ---------- MAIN ---------- */
+
+/* =========================
+   MAIN
+========================= */
 
 .invitation{
     width:100%;
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:35px 15px;
+
     position:relative;
 }
 
-/* ---------- LACE FRAME ---------- */
+
+/* =========================
+   PAPER
+========================= */
 
 .paper{
     width:min(620px,94vw);
     min-height:760px;
+
     position:relative;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:105px 70px;
+
     isolation:isolate;
 }
 
-/* big soft paper */
+
+/* =========================
+   PAPER SHAPE
+========================= */
 
 .paper::before{
     content:"";
+
     position:absolute;
+
     inset:34px;
+
     background:
-        radial-gradient(circle at 30% 20%,rgba(255,255,255,.8),transparent 30%),
-        linear-gradient(145deg,#f8f6ef,#eeeae0);
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,.85),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #f8f6ef,
+            #eeeae0
+        );
+
     box-shadow:
         0 25px 70px rgba(49,67,86,.25),
         inset 0 0 35px rgba(120,115,100,.08);
+
     z-index:-2;
 
     clip-path:polygon(
-        5% 3%, 12% 1%, 19% 4%, 27% 1%, 35% 4%, 43% 1%,
-        51% 4%, 59% 1%, 67% 4%, 75% 1%, 83% 4%, 91% 1%,
-        97% 6%, 95% 14%, 98% 22%, 95% 30%, 98% 38%,
-        95% 46%, 98% 54%, 95% 62%, 98% 70%, 95% 78%,
-        98% 86%, 94% 94%, 86% 96%, 78% 94%, 70% 97%,
-        62% 94%, 54% 97%, 46% 94%, 38% 97%, 30% 94%,
-        22% 97%, 14% 94%, 6% 97%, 2% 91%, 5% 83%,
-        2% 75%, 5% 67%, 2% 59%, 5% 51%, 2% 43%,
-        5% 35%, 2% 27%, 5% 19%, 2% 11%
+        5% 3%,
+        12% 1%,
+        19% 4%,
+        27% 1%,
+        35% 4%,
+        43% 1%,
+        51% 4%,
+        59% 1%,
+        67% 4%,
+        75% 1%,
+        83% 4%,
+        91% 1%,
+        97% 6%,
+        95% 14%,
+        98% 22%,
+        95% 30%,
+        98% 38%,
+        95% 46%,
+        98% 54%,
+        95% 62%,
+        98% 70%,
+        95% 78%,
+        98% 86%,
+        94% 94%,
+        86% 96%,
+        78% 94%,
+        70% 97%,
+        62% 94%,
+        54% 97%,
+        46% 94%,
+        38% 97%,
+        30% 94%,
+        22% 97%,
+        14% 94%,
+        6% 97%,
+        2% 91%,
+        5% 83%,
+        2% 75%,
+        5% 67%,
+        2% 59%,
+        5% 51%,
+        2% 43%,
+        5% 35%,
+        2% 27%,
+        5% 19%,
+        2% 11%
     );
 }
 
-/* lace outer decoration */
+
+/* =========================
+   LACE
+========================= */
 
 .lace{
     position:absolute;
     inset:0;
+
     z-index:-1;
-    filter:drop-shadow(0 10px 12px rgba(48,66,84,.14));
+
+    filter:
+        drop-shadow(
+            0 10px 12px rgba(48,66,84,.14)
+        );
 }
 
 .lace::before,
 .lace::after{
     content:"";
+
     position:absolute;
-    border:12px dotted rgba(249,247,239,.9);
+
     border-radius:46%;
+
+    border-style:dotted;
+
+    border-color:rgba(249,247,239,.92);
 }
 
 .lace::before{
     inset:18px;
+
+    border-width:12px;
+
     transform:rotate(2deg);
 }
 
 .lace::after{
     inset:28px;
-    transform:rotate(-2deg);
+
     border-width:7px;
+
+    transform:rotate(-2deg);
 }
 
-/* lace little flowers */
+
+/* =========================
+   DECORATIVE FLOWERS
+========================= */
 
 .flower{
     position:absolute;
+
     width:52px;
     height:52px;
+
     border-radius:50%;
+
     background:
-        radial-gradient(circle,#fff 0 8%,transparent 9%),
+        radial-gradient(
+            circle,
+            #fff 0 8%,
+            transparent 9%
+        ),
         repeating-conic-gradient(
             from 0deg,
             rgba(250,248,240,.95) 0deg 12deg,
             transparent 12deg 24deg
         );
+
     opacity:.88;
-    filter:blur(.15px);
+
+    animation:
+        flowerFloat 5s ease-in-out infinite;
 }
 
-.f1{top:20px;left:50%;transform:translateX(-50%)}
-.f2{bottom:20px;left:50%;transform:translateX(-50%)}
-.f3{left:20px;top:50%;transform:translateY(-50%)}
-.f4{right:20px;top:50%;transform:translateY(-50%)}
+.f1{
+    top:20px;
+    left:50%;
 
-/* ---------- TEXT CARD ---------- */
-
-.content{
-    width:100%;
-    max-width:440px;
-    text-align:center;
-    position:relative;
-    padding:55px 35px 50px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.70),
-            rgba(246,243,235,.88)
-        );
-    box-shadow:
-        inset 0 0 30px rgba(130,125,110,.06),
-        0 8px 30px rgba(80,92,105,.06);
-
-    border-radius:46% 46% 48% 48% / 8% 8% 8% 8%;
-
-    animation:contentReveal 1.4s cubic-bezier(.2,.8,.2,1) both;
-}
-
-/* inner decorative border */
-
-.content::before{
-    content:"";
-    position:absolute;
-    inset:18px;
-    border:1px solid rgba(111,130,150,.22);
-    border-radius:44% 44% 46% 46% / 7% 7% 7% 7%;
-    pointer-events:none;
-}
-
-.content::after{
-    content:"";
-    position:absolute;
-    width:75%;
-    height:1px;
-    left:12.5%;
-    top:30px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(103,124,145,.3),
-        transparent
-    );
-}
-
-/* ---------- TEXT ---------- */
-
-.small-title{
-    font-size:17px;
-    letter-spacing:1.5px;
-    margin-bottom:22px;
-    opacity:0;
-    animation:titleIn 1s .35s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.message{
-    font-size:17px;
-    line-height:1.85;
-    font-weight:400;
-    margin:auto;
-    max-width:360px;
-    opacity:0;
-    animation:messageIn 1.2s .65s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.highlight{
-    margin-top:18px;
-    font-size:17px;
-    font-weight:600;
-    opacity:0;
-    animation:highlightIn 1s 1s ease-out forwards;
-}
-
-.date{
-    margin-top:8px;
-    font-family:"Playfair Display",serif;
-    font-style:italic;
-    font-size:36px;
-    line-height:1.2;
-    color:#5f7892;
-    opacity:0;
-    animation:dateIn 1.4s 1.25s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.from{
-    margin-top:22px;
-    font-size:16px;
-    opacity:0;
-    animation:fromIn 1s 1.65s ease-out forwards;
-}
-
-.names{
-    margin-top:8px;
-    font-family:"Playfair Display",serif;
-    font-style:italic;
-    font-size:32px;
-    line-height:1.3;
-    color:#5c7590;
-    opacity:0;
-    animation:namesIn 1.5s 1.9s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-/* ---------- DIFFERENT ANIMATIONS ---------- */
-
-@keyframes contentReveal{
-    0%{
-        opacity:0;
-        transform:scale(.88) translateY(45px);
-        filter:blur(8px);
-    }
-    100%{
-        opacity:1;
-        transform:scale(1) translateY(0);
-        filter:blur(0);
-    }
-}
-
-@keyframes titleIn{
-    0%{
-        opacity:0;
-        transform:translateY(-28px);
-        letter-spacing:8px;
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0);
-        letter-spacing:1.5px;
-    }
-}
-
-@keyframes messageIn{
-    0%{
-        opacity:0;
-        transform:translateX(-35px);
-    }
-    60%{
-        transform:translateX(8px);
-    }
-    100%{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes highlightIn{
-    0%{
-        opacity:0;
-        transform:scale(.6);
-    }
-    65%{
-        transform:scale(1.08);
-    }
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-@keyframes dateIn{
-    0%{
-        opacity:0;
-        transform:translateY(30px) rotate(-7deg);
-    }
-    70%{
-        transform:translateY(-5px) rotate(2deg);
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0) rotate(0);
-    }
-}
-
-@keyframes fromIn{
-    0%{
-        opacity:0;
-        transform:translateX(30px);
-    }
-    100%{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes namesIn{
-    0%{
-        opacity:0;
-        transform:translateY(25px) scale(.7);
-        filter:blur(5px);
-    }
-    70%{
-        transform:translateY(-5px) scale(1.04);
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0) scale(1);
-        filter:blur(0);
-    }
-}
-
-/* ---------- FLOATING LACE MOTION ---------- */
-
-.flower{
-    animation:flowerFloat 5s ease-in-out infinite;
+    transform:translateX(-50%);
 }
 
 .f2{
+    bottom:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
     animation-delay:1.4s;
 }
 
 .f3{
+    left:20px;
+    top:50%;
+
+    transform:translateY(-50%);
+
     animation-delay:2.3s;
 }
 
 .f4{
+    right:20px;
+    top:50%;
+
+    transform:translateY(-50%);
+
     animation-delay:3.1s;
 }
 
 @keyframes flowerFloat{
-    0%,100%{
-        transform:translateY(0) rotate(0);
+    0%,
+    100%{
+        margin-top:0;
+        rotate:0deg;
     }
+
     50%{
-        transform:translateY(-7px) rotate(5deg);
+        margin-top:-7px;
+        rotate:5deg;
     }
 }
 
-/* ---------- SCROLL REVEAL ---------- */
 
-.reveal{
+/* ==================================================
+   ՄԻԱՅՆ ՀՐԱՎԻՐԵԼՈՒ ՏԵՔՍՏԻ ՍՊԻՏԱԿ ՇՐՋԱՆԱԿ
+================================================== */
+
+.invitation-text-box{
+    position:relative;
+
+    width:100%;
+    max-width:455px;
+
+    margin:0 auto;
+
+    padding:43px 38px 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.97),
+            rgba(248,247,242,.96)
+        );
+
+    border:1px solid rgba(255,255,255,.98);
+
+    border-radius:10px;
+
+    box-shadow:
+        0 12px 35px rgba(65,82,100,.12),
+        inset 0 0 25px rgba(120,125,130,.055);
+
+    outline:
+        1px solid rgba(255,255,255,.88);
+
+    outline-offset:8px;
+
     opacity:0;
-    transform:translateY(45px);
-    transition:
-        opacity 1s ease,
-        transform 1s cubic-bezier(.2,.8,.2,1);
+
+    animation:
+        invitationBoxIn
+        1.15s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
 }
 
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
+
+/* Ներսի նուրբ եզրագիծ */
+
+.invitation-text-box::before{
+    content:"";
+
+    position:absolute;
+
+    inset:11px;
+
+    border:
+        1px solid
+        rgba(104,124,145,.18);
+
+    border-radius:6px;
+
+    pointer-events:none;
 }
 
-/* ---------- MOBILE ---------- */
+
+/* Վերևի փոքր դեկոր */
+
+.invitation-text-box::after{
+    content:"✦";
+
+    position:absolute;
+
+    top:2px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:0 11px;
+
+    background:#fff;
+
+    color:#71859a;
+
+    font-size:13px;
+
+    z-index:3;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.invitation-title{
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:#65798f;
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+    margin-bottom:22px;
+
+    opacity:0;
+
+    animation:
+        invitationTitleIn
+        1s
+        .25s
+        ease
+        forwards;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.invitation-message{
+    position:relative;
+
+    z-index:2;
+
+    max-width:370px;
+
+    margin:auto;
+
+    text-align:center;
+
+    color:#708399;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    font-weight:400;
+
+    opacity:0;
+
+    animation:
+        invitationMessageIn
+        1.2s
+        .55s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.invitation-highlight{
+    position:relative;
+
+    z-index:2;
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:#627890;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    opacity:0;
+
+    animation:
+        invitationHighlightIn
+        1s
+        .9s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date{
+    position:relative;
+
+    margin-top:28px;
+
+    text-align:center;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-style:italic;
+
+    font-size:36px;
+
+    line-height:1.2;
+
+    color:#5f7892;
+
+    opacity:0;
+
+    animation:
+        dateIn
+        1.4s
+        1.25s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* =========================
+   FROM
+========================= */
+
+.from{
+    margin-top:23px;
+
+    text-align:center;
+
+    color:#71849a;
+
+    font-size:16px;
+
+    opacity:0;
+
+    animation:
+        fromIn
+        1s
+        1.65s
+        ease
+        forwards;
+}
+
+
+/* =========================
+   NAMES
+========================= */
+
+.names{
+    margin-top:8px;
+
+    text-align:center;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-style:italic;
+
+    font-size:32px;
+
+    line-height:1.3;
+
+    color:#5c7590;
+
+    opacity:0;
+
+    animation:
+        namesIn
+        1.5s
+        1.9s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* =========================
+   DIFFERENT ANIMATIONS
+========================= */
+
+@keyframes invitationBoxIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(40px)
+            scale(.94);
+
+        filter:blur(5px);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+}
+
+
+@keyframes invitationTitleIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(-20px);
+
+        letter-spacing:8px;
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing:2px;
+    }
+}
+
+
+@keyframes invitationMessageIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateX(-35px);
+    }
+
+    65%{
+        transform:
+            translateX(7px);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes invitationHighlightIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            scale(.65);
+    }
+
+    70%{
+        transform:
+            scale(1.06);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes dateIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            rotate(-7deg);
+    }
+
+    70%{
+        transform:
+            translateY(-5px)
+            rotate(2deg);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+}
+
+
+@keyframes fromIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateX(30px);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+@keyframes namesIn{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(28px)
+            scale(.72);
+
+        filter:blur(5px);
+    }
+
+    70%{
+        transform:
+            translateY(-5px)
+            scale(1.04);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -419,11 +786,16 @@ body{
     .paper{
         width:100%;
         min-height:690px;
-        padding:92px 50px;
+
+        padding:
+            92px
+            50px;
     }
 
     .paper::before{
-        inset:30px 18px;
+        inset:
+            30px
+            18px;
     }
 
     .lace::before{
@@ -434,30 +806,62 @@ body{
         inset:23px;
     }
 
-    .content{
-        padding:48px 24px 45px;
+    .flower{
+        width:38px;
+        height:38px;
     }
 
-    .content::before{
-        inset:14px;
+    .f1{
+        top:22px;
     }
 
-    .small-title{
+    .f2{
+        bottom:22px;
+    }
+
+    .f3{
+        left:13px;
+    }
+
+    .f4{
+        right:13px;
+    }
+
+
+    /* միայն հրավերի սպիտակ հատվածը */
+
+    .invitation-text-box{
+        max-width:
+            calc(100% - 10px);
+
+        padding:
+            35px
+            24px
+            32px;
+    }
+
+    .invitation-title{
         font-size:15px;
+
+        letter-spacing:1.5px;
+
         margin-bottom:18px;
     }
 
-    .message{
+    .invitation-message{
         font-size:14px;
+
         line-height:1.8;
     }
 
-    .highlight{
+    .invitation-highlight{
         font-size:14px;
+
+        line-height:1.6;
     }
 
     .date{
-        font-size:28px;
+        font-size:29px;
     }
 
     .from{
@@ -467,24 +871,16 @@ body{
     .names{
         font-size:27px;
     }
-
-    .flower{
-        width:38px;
-        height:38px;
-    }
-
-    .f1{top:22px}
-    .f2{bottom:22px}
-    .f3{left:13px}
-    .f4{right:13px}
 }
 </style>
 </head>
+
 
 <body>
 
 <div class="bg-glow one"></div>
 <div class="bg-glow two"></div>
+
 
 <main class="invitation">
 
@@ -497,58 +893,86 @@ body{
         <div class="flower f3"></div>
         <div class="flower f4"></div>
 
-        <section class="content">
 
-            <div class="small-title">
+        <!-- ==========================================
+             ՄԻԱՅՆ ՀՐԱՎԻՐԵԼՈՒ ՄԱՍԸ
+        =========================================== -->
+
+        <section class="invitation-text-box">
+
+            <div class="invitation-title">
                 ՍԻՐԵԼԻ ՀՅՈՒՐԵՐ
             </div>
 
-            <div class="message">
+            <div class="invitation-message">
+
                 Մեր կյանքում կարևոր
                 իրադարձություն է սպասվում․
                 մենք ցանկանում ենք կիսվել
                 այդ գեղեցիկ օրվա
                 ուրախությամբ Ձեզ հետ։
+
             </div>
 
-            <div class="highlight">
+            <div class="invitation-highlight">
+
                 Սպասում ենք Ձեզ մեր հարսանիքին
-            </div>
 
-            <div class="date">
-                13 փետրվարի 2027
-            </div>
-
-            <div class="from">
-                Սիրով՝
-            </div>
-
-            <div class="names">
-                Արթուր և Մարի
             </div>
 
         </section>
 
+
+        <!-- DATE -->
+
+        <div
+            class="date"
+            style="
+                position:absolute;
+                top:calc(50% + 205px);
+                left:50%;
+                transform:translateX(-50%);
+                width:100%;
+            "
+        >
+            13 փետրվարի 2027
+        </div>
+
+
+        <!-- FROM -->
+
+        <div
+            class="from"
+            style="
+                position:absolute;
+                top:calc(50% + 270px);
+                left:50%;
+                transform:translateX(-50%);
+                width:100%;
+            "
+        >
+            Սիրով՝
+        </div>
+
+
+        <!-- NAMES -->
+
+        <div
+            class="names"
+            style="
+                position:absolute;
+                top:calc(50% + 295px);
+                left:50%;
+                transform:translateX(-50%);
+                width:100%;
+            "
+        >
+            Արթուր և Մարի
+        </div>
+
     </div>
 
 </main>
-
-<script>
-const observer = new IntersectionObserver(
-    entries=>{
-        entries.forEach(entry=>{
-            if(entry.isIntersecting){
-                entry.target.classList.add("show");
-            }
-        });
-    },
-    {threshold:.15}
-);
-
-document.querySelectorAll(".reveal").forEach(el=>{
-    observer.observe(el);
-});
-</script>
 
 </body>
 </html>
