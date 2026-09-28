@@ -23,8 +23,8 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .left{position:absolute;z-index:4;inset:0 auto 0 0;width:52%;background:linear-gradient(145deg,#f9f5ef,#e1d6c6);clip-path:polygon(0 0,100% 50%,0 100%)}
 .right{position:absolute;z-index:4;inset:0 0 0 auto;width:52%;background:linear-gradient(215deg,#f9f5ef,#e1d6c6);clip-path:polygon(100% 0,0 50%,100% 100%)}
 .bottom{position:absolute;z-index:5;inset:auto 0 0;width:100%;height:70%;background:linear-gradient(145deg,#eee7dc,#d8cbb9);clip-path:polygon(0 100%,50% 19%,100% 100%)}
-.top{position:absolute;z-index:10;inset:0 0 auto;width:100%;height:68%;background:linear-gradient(135deg,#fcfaf6,#f0e7da 55%,#ded1bf);clip-path:polygon(0 0,100% 0,50% 94%);transform-origin:top;transition:transform .72s cubic-bezier(.18,.72,.25,1)}
-.stamp{position:absolute;z-index:50;left:50%;top:53%;width:150px;height:150px;object-fit:contain;transform:translate(-50%,-50%) rotate(-4deg);mix-blend-mode:multiply;filter:contrast(1.08) saturate(1.08) drop-shadow(0 9px 8px rgba(67,45,22,.22));transition:.35s}
+.top{position:absolute;z-index:10;inset:0 0 auto;width:100%;height:68%;background:linear-gradient(135deg,#fcfaf6,#f0e7da 55%,#ded1bf);clip-path:polygon(0 0,100% 0,50% 94%);transform-origin:top;transition:transform 1.35s cubic-bezier(.18,.72,.25,1)}
+.stamp{position:absolute;z-index:50;left:50%;top:53%;width:150px;height:150px;object-fit:contain;transform:translate(-50%,-50%) rotate(-4deg);mix-blend-mode:multiply;filter:contrast(1.08) saturate(1.08) drop-shadow(0 9px 8px rgba(67,45,22,.22));transition:.6s}
 .envelope.open .top{transform:rotateX(180deg)}
 .envelope.open .stamp{opacity:0;transform:translate(-50%,-50%) scale(.65) rotate(12deg)}
 
@@ -47,24 +47,13 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .hero .names{z-index:1}
 .hero .names{background:transparent}
 .hero .names{letter-spacing:1px}
-
-55%{transform:translateY(-4px) scale(1.03)}
-  100%{opacity:1;transform:translateY(0) scale(1)}
-}
-
 .footer .names{font-style:normal;transform:none;white-space:normal}
 .line{width:70px;height:1px;background:#b9a78d;margin:25px auto}
 .date{font-size:24px;letter-spacing:4px;color:#746d60}
 .eyebrow{font-size:18px;color:#8b7a61;margin-bottom:13px}
 .intro{background:#fbf7ef}
 .intro h2,.events h2,.countdown h2,.rsvp h2{font-size:46px;font-weight:500;color:#43503f}
-.intro p{max-width:720px;margin:25px auto 18px;line-height:2.05;font-size:17px;color:#6f7068}
-.love-quote{max-width:620px;margin:28px auto 0;padding:24px 28px;position:relative;color:#8b7b6c;font-family:'Ballet','Parisienne',cursive;font-size:30px;line-height:1.45;font-style:normal}
-.love-quote::before,.love-quote::after{content:'\201C';position:absolute;color:#b9a78d;font-family:Georgia,serif;font-size:48px;line-height:1;opacity:.55}
-.love-quote::before{left:0;top:6px}
-.love-quote::after{content:'\201D';right:0;bottom:-5px}
-.love-quote span{display:block;font-family:'Noto Serif Armenian',serif;font-size:13px;letter-spacing:1px;color:#a09383;margin-top:10px;font-style:normal}
-
+.intro p{max-width:650px;margin:25px auto;line-height:2.1;font-size:17px;color:#6f7068}
 .events{background:#e9e0d2}
 .events .grid{max-width:1050px;margin:55px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .event{position:relative;overflow:hidden;padding:45px 25px;background:rgba(255,253,248,.62);border:1px solid rgba(128,108,78,.15);box-shadow:0 10px 25px rgba(74,58,38,.06)}
@@ -97,7 +86,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .contacts{margin-top:45px;font-size:11px;line-height:2.5;color:#8f8575}
 .contacts a{color:inherit;text-decoration:none}
 @media(max-width:700px){
-.title{font-size:18px;margin-bottom:24px}
+ .title{font-size:18px;margin-bottom:24px}
  .stamp{width:110px;height:110px}
  .inside{font-size:31px}
  .small{font-size:12px}
@@ -174,6 +163,48 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .address-btn{font-size:11px;border:0;border-bottom:1px solid #aaa;background:transparent;color:#68705b;font-family:inherit;cursor:pointer;padding:0 0 3px}
 
 </style>
+
+<style>
+.custom-save-date-image{
+  width:min(330px,82%);
+  margin:24px auto 12px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(12px) scale(.97);
+  animation:customImageIn 1s .2s ease forwards;
+}
+.custom-save-date-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:auto;
+  object-fit:contain;
+}
+.custom-heart-image{
+  width:min(150px,42%);
+  margin:16px auto 10px;
+  text-align:center;
+  opacity:0;
+  transform:scale(.9);
+  animation:heartImageIn .9s .25s ease forwards;
+}
+.custom-heart-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:auto;
+  object-fit:contain;
+}
+@keyframes customImageIn{
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes heartImageIn{
+  0%{opacity:0;transform:scale(.85) rotate(-3deg)}
+  70%{opacity:1;transform:scale(1.04) rotate(1deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+</style>
+
 </head>
 <body>
 <div class="lang-switch" aria-label="Լեզու / Язык"><button id="hyBtn" class="active" type="button">ՀԱՅ</button><button id="ruBtn" type="button">РУС</button></div>
@@ -196,6 +227,14 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 <main class="main" id="main">
 <section class="section hero">
 <div><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div>
+<!-- ==============================
+     PERSONAL IMAGE: SAVE THE DATE
+     Put your image file in the same folder:
+     save-the-date.png
+================================== -->
+<div class="custom-save-date-image">
+  <img src="save-the-date.png" alt="Save the Date">
+</div>
 <div class="line"></div><div class="calendar-wrap">
   <div class="calendar-title" data-hy="Նոյեմբեր" data-ru="Ноябрь">Նոյեմբեր</div>
   <div class="calendar-grid" aria-label="Calendar November 2026">
@@ -216,12 +255,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
   </div>
 </div></div>
 </section>
-<section class="section intro">
-<h2 data-hy="Սիրով հրավիրում ենք" data-ru="С любовью приглашаем">Սիրով հրավիրում ենք</h2>
-<div class="line"></div>
-<p data-hy="Մեր կյանքի ամենագեղեցիկ էջերից մեկը բացվում է, և մենք ցանկանում ենք այն սկսել հենց Ձեզ հետ։ Սիրով հրավիրում ենք կիսելու մեր երջանկությունը, ջերմ ժպիտներն ու այն օրը, որը մեզ համար դառնալու է մի ամբողջ կյանքի ամենաթանկ հիշողություններից մեկը։ Ձեր ներկայությունը մեր տոնը կդարձնի այդ օրը առավել ամբողջական, լուսավոր ու ջերմ։" data-ru="Открывается одна из самых прекрасных страниц нашей жизни, и мы хотим начать её вместе с Вами. С любовью приглашаем разделить наше счастье, тёплые улыбки и день, который станет для нас одним из самых дорогих воспоминаний на всю жизнь. Ваше присутствие сделает этот праздник ещё более светлым, тёплым и особенным.">Մեր կյանքի ամենագեղեցիկ էջերից մեկը բացվում է, և մենք ցանկանում ենք այն սկսել հենց Ձեզ հետ։ Սիրով հրավիրում ենք կիսելու մեր երջանկությունը, ջերմ ժպիտներն ու այն օրը, որը մեզ համար դառնալու է մի ամբողջ կյանքի ամենաթանկ հիշողություններից մեկը։ Ձեր ներկայությունը մեր տոնը կդարձնի այդ օրը առավել ամբողջական, լուսավոր ու ջերմ։</p>
-<div class="love-quote" data-hy="«Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։»" data-ru="«Любовь — это не только встреча двух сердец, но и самое прекрасное решение — каждый день выбирать друг друга снова.»">«Սերը երկու սրտերի հանդիպումը չէ միայն, այլ ամեն օր միմյանց նորից ընտրելու ամենագեղեցիկ որոշումը։»</div>
-</section>
+<section class="section intro"><h2 data-hy="Սիրով հրավիրում ենք" data-ru="С любовью приглашаем">Սիրով հրավիրում ենք</h2><div class="line"></div><p data-hy="Մեր կյանքի ամենագեղեցիկ օրը ցանկանում ենք կիսել Ձեզ հետ։ Ձեր ներկայությունը մեզ համար կլինի այդ օրվա ամենաթանկ նվերը։" data-ru="Мы хотим разделить с Вами самый прекрасный день нашей жизни. Ваше присутствие станет для нас самым дорогим подарком этого дня.">Մեր կյանքի ամենագեղեցիկ օրը ցանկանում ենք կիսել Ձեզ հետ։ Ձեր ներկայությունը մեզ համար կլինի այդ օրվա ամենաթանկ նվերը։</p></section>
 <section class="section events"><h2 data-hy="Օրվա ընթացքը" data-ru="Ход дня">Օրվա ընթացքը</h2><div class="grid">
  <div class="event"><img class="venue-image" src="church.jpg" alt="Սուրբ Մարիամ Աստվածածին" data-alt-hy="Սուրբ Մարիամ Աստվածածին" data-alt-ru="Сурб Мариам Аствацацин"><h3 data-hy="Եկեղեցի" data-ru="Церковь">Եկեղեցի</h3><p data-hy="Սուրբ Մարիամ Աստվածածին" data-ru="Сурб Мариам Аствацацин">Սուրբ Մարիամ Աստվածածին</p><a class="map" target="_blank" rel="noopener" href="https://yandex.com/maps/org/tserkov_surb_mariam_astvatsatsin/35349517580/" data-hy="Ինչպես հասնել" data-ru="Как добраться">Ինչպես հասնել</a></div>
  <div class="event"><img class="venue-image" src="restaurant.jpg" alt="Grace Hall"><h3 data-hy="Հարսանյաց հանդիսություն" data-ru="Свадебное торжество">Հարսանյաց հանդիսություն</h3><p>Grace Hall</p><a class="map" target="_blank" rel="noopener" href="https://yandex.com/maps/org/greys_hall/80368514301/" data-hy="Ինչպես հասնել" data-ru="Как добраться">Ինչպես հասնել</a></div>
@@ -233,8 +267,16 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 <div class="group"><label data-hy="Անուն" data-ru="Имя">Անուն</label><input required placeholder="Ձեր անունը" data-ph-hy="Ձեր անունը" data-ph-ru="Ваше имя"></div><div class="group"><label data-hy="Ազգանուն" data-ru="Фамилия">Ազգանուն</label><input required placeholder="Ձեր ազգանունը" data-ph-hy="Ձեր ազգանունը" data-ph-ru="Ваша фамилия"></div>
 <div class="group full"><label data-hy="Ո՞ւմ կողմից եք հրավիրված" data-ru="Кем Вы приглашены?">Ո՞ւմ կողմից եք հրավիրված</label><select required><option value="" data-hy="Ընտրել" data-ru="Выбрать">Ընտրել</option><option value="bride" data-hy="Հարսի կողմից" data-ru="Со стороны невесты">Հարսի կողմից</option><option value="groom" data-hy="Փեսայի կողմից" data-ru="Со стороны жениха">Փեսայի կողմից</option></select></div>
 </div><button class="submit" type="submit" data-hy="ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ" data-ru="ПОДТВЕРДИТЬ УЧАСТИЕ">ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ</button></form></section>
-<footer class="footer">
-<h2 data-hy="Սիրով սպասում ենք Ձեզ" data-ru="С любовью ждём Вас">Սիրով սպասում ենք Ձեզ</h2><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div><div class="contacts"><div><a href="mailto:our.eventto@gmail.com">our.eventto@gmail.com</a></div><div><a href="https://eventto.am" target="_blank">eventto.am</a></div></div></footer>
+<footer class="footer"><h2 data-hy="
+<!-- ==============================
+     PERSONAL IMAGE: HEART ORNAMENT
+     Put your image file in the same folder:
+     love-hearts.png
+================================== -->
+<div class="custom-heart-image">
+  <img src="love-hearts.png" alt="">
+</div>
+Սիրով սպասում ենք Ձեզ" data-ru="С любовью ждём Вас">Սիրով սպասում ենք Ձեզ</h2><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div><div class="contacts"><div><a href="mailto:our.eventto@gmail.com">our.eventto@gmail.com</a></div><div><a href="https://eventto.am" target="_blank">eventto.am</a></div></div></footer>
 </main>
 <script>
 const envelope=document.getElementById('envelope'),opening=document.getElementById('opening'),main=document.getElementById('main');
@@ -296,8 +338,7 @@ function openInvitation(e){
   setTimeout(()=>{
     opening.classList.add('hide');
     main.classList.add('show');
-    window.scrollTo({top:0,behavior:'instant'});
-  },760);
+  },2050);
 }
 
 envelope.addEventListener('click',openInvitation);
