@@ -155,8 +155,8 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 @keyframes softReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(22px);}
 .reveal.visible{animation:textReveal .9s cubic-bezier(.22,.61,.36,1) forwards}
-.hero .eyebrow,.hero .names,.hero .line,.hero .date,.calendar-wrap{opacity:0;animation:softReveal .9s cubic-bezier(.22,.61,.36,1) forwards}
-.hero .eyebrow{animation-delay:.15s}.hero .names{animation-delay:.3s}.hero .line{animation-delay:.48s}.hero .date{animation-delay:.58s}.calendar-wrap{animation-delay:.72s}
+.hero .eyebrow,.hero .names,.hero .line,.calendar-wrap{opacity:0;animation:softReveal .9s cubic-bezier(.22,.61,.36,1) forwards}
+.hero .eyebrow{animation-delay:.15s}.hero .names{animation-delay:.3s}.hero .line{animation-delay:.48s}.calendar-wrap{animation-delay:.58s}
 .event{transition:transform .35s ease,box-shadow .35s ease}.event:hover{transform:translateY(-5px);box-shadow:0 16px 30px rgba(74,58,38,.10)}
 .map{display:inline-flex;align-items:center;justify-content:center;min-width:145px;margin-top:18px;padding:10px 18px;border:1px solid #a99a80;border-radius:999px;color:#5f6855;font-size:12px;text-decoration:none;background:rgba(255,253,248,.55);transition:.3s ease}
 .map:hover{background:#59644c;color:#fffaf1;border-color:#59644c;transform:translateY(-2px)}
@@ -182,13 +182,11 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 
 <audio id="bgMusic" preload="auto" loop playsinline>
   <source src="./indila-love-story-violin.mp3" type="audio/mpeg">
-   <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
 <main class="main" id="main">
 <section class="section hero">
-<div><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div><div class="line"></div><div class="date">07 · 11 · 2026</div>
-<div class="calendar-wrap">
+<div><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div><div class="line"></div><div class="calendar-wrap">
   <div class="calendar-title" data-hy="Նոյեմբեր" data-ru="Ноябрь">Նոյեմբեր</div>
   <div class="calendar-year">2026</div>
   <div class="calendar-grid" aria-label="Calendar November 2026">
