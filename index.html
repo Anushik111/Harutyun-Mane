@@ -48,9 +48,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .hero .names{background:transparent}
 .hero .names{letter-spacing:1px}
 /* Couple photo above the names */
-.couple-photo{width:145px;height:145px;margin:0 auto 18px;border-radius:50%;overflow:hidden;border:1px solid rgba(70,66,60,.15);background:#eee;box-shadow:0 4px 16px rgba(50,45,38,.08)}
-.couple-photo img{width:100%;height:100%;display:block;object-fit:cover}
-@media(max-width:600px){.couple-photo{width:112px;height:112px;margin-bottom:14px}}
+.couple-photo{width:min(520px,92vw);margin:0 auto 24px;overflow:hidden;border-radius:0;border:none;box-shadow:none}
+.couple-photo img{width:100%;height:auto;display:block;object-fit:contain}
+@media(max-width:600px){.couple-photo{width:92vw;max-width:520px;aspect-ratio:4/3;margin-bottom:18px}}
 
 
 55%{transform:translateY(-4px) scale(1.03)}
