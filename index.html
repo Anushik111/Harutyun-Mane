@@ -174,23 +174,131 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .address-btn{font-size:11px;border:0;border-bottom:1px solid #aaa;background:transparent;color:#68705b;font-family:inherit;cursor:pointer;padding:0 0 3px}
 
 
-/* --- Շարժվող երթուղու քարտեզ --- */
-.route-map-section{background:#eae7e2;padding:36px 0;min-height:980px;display:flex;justify-content:center;align-items:center;overflow:visible}
-.route-map{position:relative;width:520px;height:900px;line-height:0;margin:0 auto}
-.route-bg{display:block;width:100%;height:100%;max-width:none;border:0;outline:0;object-fit:fill}
-.route-pin{position:absolute;z-index:8;left:56.95%;top:23.7%;width:30px;height:38px;transform:translate(-50%,-100%);transition:left .9s cubic-bezier(.22,.61,.36,1),top .9s cubic-bezier(.22,.61,.36,1),transform .35s ease;filter:drop-shadow(0 5px 5px rgba(50,45,38,.16));pointer-events:none}
-.route-pin::before{content:"";position:absolute;font-weight:700}
-.route-stop{position:absolute;z-index:7;width:170px;padding:12px 14px 14px;text-align:center;background:rgba(255,255,255,.94);line-height:1.15;box-sizing:border-box}
-.route-stop .stop-time{font-size:30px;line-height:1;color:#d2d0cb;margin-bottom:7px}
-.route-stop .stop-title{font-size:15px;font-weight:700;line-height:1.2;color:#161616}
-.route-stop .stop-place{font-size:12px;margin-top:6px;color:#555;line-height:1.25}
-.route-stop.stop-home{left:-190px;top:10%}
-.route-stop.stop-church{right:-190px;top:43%}
-.route-stop.stop-restaurant{left:-190px;top:78%}
-.route-map-button{display:inline-flex;align-items:center;justify-content:center;min-width:90px;min-height:38px;margin-top:10px;padding:7px 12px;font-size:11px}
-@media(max-width:900px){.route-map-section{min-height:900px}.route-map{width:440px;height:820px}.route-stop{width:155px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-170px}.route-stop.stop-church{right:-170px}}
-@media(max-width:600px){.route-map-section{padding:24px 0;min-height:820px;overflow:visible}.route-map{width:300px;height:760px}.route-pin{width:24px;height:32px}.route-pin::before{width:21px;height:21px}.route-pin span{width:9px;height:9px;top:4px}.route-stop{width:140px;padding:9px 8px 11px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-145px}.route-stop.stop-church{right:-145px}.route-stop .stop-time{font-size:25px}.route-stop .stop-title{font-size:13px}.route-stop .stop-place{font-size:10px}.route-map-button{min-width:80px;min-height:34px;margin-top:7px;padding:5px 9px;font-size:10px}}
-@media(max-width:430px){.route-map{width:270px;height:720px}.route-stop{width:128px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-132px}.route-stop.stop-church{right:-132px}.route-stop .stop-time{font-size:22px}.route-stop .stop-title{font-size:12px}.route-stop .stop-place{font-size:9px}}
+/* --- Մեր օրվա ուղին --- */
+.route-map-section{
+  background:#eae7e2;
+  padding:55px 0 65px;
+  min-height:1160px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:visible;
+}
+.route-map{
+  position:relative;
+  width:560px;
+  height:1040px;
+  line-height:0;
+  margin:0 auto;
+}
+.route-bg{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  border:0;
+  outline:0;
+  object-fit:fill;
+}
+.route-pin{
+  position:absolute;
+  z-index:8;
+  left:56.95%;
+  top:23.7%;
+  width:30px;
+  height:38px;
+  transform:translate(-50%,-100%);
+  transition:left .9s cubic-bezier(.22,.61,.36,1),top .9s cubic-bezier(.22,.61,.36,1);
+  filter:drop-shadow(0 5px 5px rgba(50,45,38,.16));
+  pointer-events:none;
+}
+.route-pin::before{content:"";position:absolute}
+.route-stop{
+  position:absolute;
+  z-index:10;
+  width:205px;
+  padding:15px 15px 16px;
+  text-align:center;
+  background:rgba(255,255,255,.96);
+  line-height:1.15;
+  box-sizing:border-box;
+  box-shadow:0 2px 12px rgba(60,55,48,.03);
+}
+.route-stop .stop-time{
+  font-size:31px;
+  line-height:1;
+  color:#d2d0cb;
+  margin-bottom:8px;
+  font-family:inherit;
+}
+.route-stop .stop-title{
+  font-size:16px;
+  font-weight:700;
+  line-height:1.2;
+  color:#161616;
+}
+.route-stop .stop-place{
+  font-size:12px;
+  margin-top:7px;
+  color:#555;
+  line-height:1.3;
+}
+.route-stop.stop-home{
+  left:-225px;
+  top:8%;
+}
+.route-stop.stop-church{
+  right:-225px;
+  top:43%;
+}
+.route-stop.stop-restaurant{
+  left:-225px;
+  top:78%;
+}
+.route-map-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:100px;
+  min-height:38px;
+  margin-top:11px;
+  padding:7px 14px;
+  font-size:11px;
+}
+@media(max-width:1000px){
+  .route-map-section{min-height:1080px}
+  .route-map{width:500px;height:960px}
+  .route-stop{width:185px}
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-200px}
+  .route-stop.stop-church{right:-200px}
+}
+@media(max-width:760px){
+  .route-map-section{padding:35px 0;min-height:980px}
+  .route-map{width:390px;height:900px}
+  .route-stop{width:165px;padding:12px 10px 14px}
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-175px}
+  .route-stop.stop-church{right:-175px}
+  .route-stop .stop-time{font-size:27px}
+  .route-stop .stop-title{font-size:14px}
+  .route-stop .stop-place{font-size:11px}
+}
+@media(max-width:600px){
+  .route-map-section{padding:25px 0;min-height:auto}
+  .route-map{
+    width:300px;
+    height:760px;
+  }
+  .route-stop{
+    width:145px;
+    padding:10px 8px 12px;
+  }
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-150px}
+  .route-stop.stop-church{right:-150px}
+  .route-stop .stop-time{font-size:23px}
+  .route-stop .stop-title{font-size:12px}
+  .route-stop .stop-place{font-size:10px}
+  .route-map-button{min-width:82px;min-height:34px;margin-top:8px;padding:5px 9px;font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -247,7 +355,6 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
     <div class="route-pin" id="routePin" aria-hidden="true">
       <span></span>
     </div>
-
     <div class="route-stop stop-home">
       <div class="stop-time">10։00</div>
       <div class="stop-title">Հարսի տուն</div>
@@ -264,6 +371,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
     <div class="route-stop stop-restaurant">
       <div class="stop-time">17։00</div>
       <div class="stop-title">Ռեստորան</div>
+      <div class="stop-place">Հարսանյաց հանդիսություն</div>
+    </div>
+
+<div class="stop-title">Ռեստորան</div>
       <div class="stop-place">Հարսանյաց հանդիսություն</div>
     </div>
 
@@ -395,8 +506,8 @@ function setRouteStage(index){
   setTimeout(()=>routePin.classList.remove('active'),320);
   const ru=lang==='ru';
   routeTime.textContent=ru?st.timeRu:st.timeHy;
-  routeTitle.textContent=ru?st.titleRu:st.titleHy;
-  routePlace.textContent=ru?st.placeRu:st.placeHy;
+  if(routeTitle) routeTitle.textContent=ru?st.titleRu:st.titleHy;
+  if(routePlace) routePlace.textContent=ru?st.placeRu:st.placeHy;
   if(st.map){
     routeMapButton.href=st.map;
     routeMapButton.classList.remove('disabled');
