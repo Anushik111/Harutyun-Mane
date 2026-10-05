@@ -299,6 +299,41 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
   .route-stop .stop-place{font-size:10px}
   .route-map-button{min-width:82px;min-height:34px;margin-top:8px;padding:5px 9px;font-size:10px}
 }
+
+.dress-code-section{
+  background:#eae7e2;
+  padding:70px 24px;
+  text-align:center;
+}
+.dress-code-card{
+  max-width:760px;
+  margin:0 auto;
+  padding:42px 38px;
+  background:rgba(255,255,255,.72);
+  box-sizing:border-box;
+}
+.dress-code-card h2{
+  margin:0 0 28px;
+  font-size:30px;
+  font-weight:500;
+  letter-spacing:.02em;
+}
+.dress-code-text{
+  max-width:650px;
+  margin:0 auto;
+}
+.dress-code-text p{
+  margin:0 0 16px;
+  font-size:16px;
+  line-height:1.75;
+}
+.dress-code-text p:last-child{margin-bottom:0}
+@media(max-width:600px){
+  .dress-code-section{padding:48px 18px}
+  .dress-code-card{padding:30px 20px}
+  .dress-code-card h2{font-size:25px;margin-bottom:22px}
+  .dress-code-text p{font-size:14px;line-height:1.65}
+}
 </style>
 </head>
 <body>
@@ -381,6 +416,30 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
   </div>
 </section>
 <section class="section countdown"><h2 data-hy="Մինչև մեր օրը" data-ru="До нашего дня">Մինչև մեր օրը</h2><div class="times"><div class="time"><strong id="d">00</strong><span data-hy="ՕՐ" data-ru="ДНЕЙ">ՕՐ</span></div><div class="time"><strong id="h">00</strong><span data-hy="ԺԱՄ" data-ru="ЧАСОВ">ԺԱՄ</span></div><div class="time"><strong id="m">00</strong><span data-hy="ՐՈՊԵ" data-ru="МИНУТ">ՐՈՊԵ</span></div><div class="time"><strong id="s">00</strong><span data-hy="ՎԱՅՐԿՅԱՆ" data-ru="СЕКУНД">ՎԱՅՐԿՅԱՆ</span></div></div></section>
+
+<section class="section dress-code-section" id="dressCodeSection" aria-label="Դրես-կոդ">
+  <div class="dress-code-card">
+    <h2 data-hy="Դրես-կոդ" data-ru="Дресс-код">Դրես-կոդ</h2>
+    <div class="dress-code-text">
+      <p data-hy="Մենք որոշել ենք հրաժարվել խիստ դրես-կոդից և չսահմանափակել ձեզ որոշակի գույներով կամ ոճով."
+         data-ru="Мы решили отказаться от строгого дресс-кода и не ограничивать вас определёнными цветами или стилем.">
+        Մենք որոշել ենք հրաժարվել խիստ դրես-կոդից և չսահմանափակել ձեզ որոշակի գույներով կամ ոճով.
+      </p>
+      <p data-hy="Մեզ համար ամենագլխավորը ձեր ներկայությունն է, ժպիտները և լավ տրամադրությունը."
+         data-ru="Для нас самое главное — ваше присутствие, улыбки и хорошее настроение.">
+        Մեզ համար ամենագլխավորը ձեր ներկայությունն է, ժպիտները և լավ տրամադրությունը.
+      </p>
+      <p data-hy="Ընտրեք հագուստ, որում դուք ձեզ գեղեցիկ և հարմարավետ կզգաք."
+         data-ru="Выбирайте одежду, в которой вы будете чувствовать себя красиво и комфортно.">
+        Ընտրեք հագուստ, որում դուք ձեզ գեղեցիկ և հարմարավետ կզգաք.
+      </p>
+      <p data-hy="Միակ խնդրանքը՝ խնդրում ենք աղջիկներին զերծ մնալ սպիտակ զգեստներից, որպեսզի այդ գույնը մնա բացառապես հարսիկինը."
+         data-ru="Единственная просьба — просим девушек воздержаться от белых платьев, чтобы этот цвет остался исключительно за невестой.">
+        Միակ խնդրանքը՝ խնդրում ենք աղջիկներին զերծ մնալ սպիտակ զգեստներից, որպեսզի այդ գույնը մնա բացառապես հարսիկինը.
+      </p>
+    </div>
+  </div>
+</section>
 <section class="section rsvp"><h2 data-hy="Հաստատել մասնակցությունը" data-ru="Подтвердить участие">Հաստատել մասնակցությունը</h2><form class="form" id="form"><div class="form-grid">
 <div class="group"><label data-hy="Կկարողանա՞ք գալ" data-ru="Сможете прийти?">Կկարողանա՞ք գալ</label><select required><option value="" data-hy="Ընտրել" data-ru="Выбрать">Ընտրել</option><option data-hy="Այո, սիրով" data-ru="Да, с удовольствием">Այո, սիրով</option><option data-hy="Ցավոք, չեմ կարող" data-ru="К сожалению, не смогу">Ցավոք, չեմ կարող</option></select></div>
 <div class="group"><label data-hy="Հյուրերի քանակ" data-ru="Количество гостей">Հյուրերի քանակ</label><select required><option value="" data-hy="Ընտրել քանակը" data-ru="Выберите количество">Ընտրել քանակը</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option data-hy="6 և ավելի" data-ru="6 и более">6 և ավելի</option></select></div>
@@ -508,12 +567,14 @@ function setRouteStage(index){
   routeTime.textContent=ru?st.timeRu:st.timeHy;
   if(routeTitle) routeTitle.textContent=ru?st.titleRu:st.titleHy;
   if(routePlace) routePlace.textContent=ru?st.placeRu:st.placeHy;
-  if(st.map){
-    routeMapButton.href=st.map;
-    routeMapButton.classList.remove('disabled');
-  }else{
-    routeMapButton.removeAttribute('href');
-    routeMapButton.classList.add('disabled');
+  if(routeMapButton){
+    if(st.map){
+      routeMapButton.href=st.map;
+      routeMapButton.classList.remove('disabled');
+    }else{
+      routeMapButton.removeAttribute('href');
+      routeMapButton.classList.add('disabled');
+    }
   }
 }
 function updateRouteByScroll(){
@@ -531,8 +592,23 @@ window.addEventListener('scroll',updateRouteByScroll,{passive:true});
 window.addEventListener('resize',updateRouteByScroll);
 setRouteStage(0);
 
-const target=new Date('2026-11-07T18:00:00');
-function tick(){let x=Math.max(0,target-new Date());document.getElementById('d').textContent=String(Math.floor(x/86400000)).padStart(2,'0');document.getElementById('h').textContent=String(Math.floor(x/3600000)%24).padStart(2,'0');document.getElementById('m').textContent=String(Math.floor(x/60000)%60).padStart(2,'0');document.getElementById('s').textContent=String(Math.floor(x/1000)%60).padStart(2,'0')}tick();setInterval(tick,1000);
+const target=new Date(2026,10,7,18,0,0);
+function tick(){
+  const now=new Date();
+  const x=Math.max(0,target.getTime()-now.getTime());
+  const totalSeconds=Math.floor(x/1000);
+  const d=document.getElementById('d');
+  const h=document.getElementById('h');
+  const m=document.getElementById('m');
+  const sec=document.getElementById('s');
+  if(!d||!h||!m||!sec)return;
+  d.textContent=String(Math.floor(totalSeconds/86400)).padStart(2,'0');
+  h.textContent=String(Math.floor(totalSeconds/3600)%24).padStart(2,'0');
+  m.textContent=String(Math.floor(totalSeconds/60)%60).padStart(2,'0');
+  sec.textContent=String(totalSeconds%60).padStart(2,'0');
+}
+tick();
+setInterval(tick,1000);
 document.querySelectorAll('.section h2,.section p,.event h3,.event .venue-image,.event .map,.time,.form .group,.submit,.footer h2,.footer .names,.contacts').forEach(el=>el.classList.add('reveal'));
 const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
