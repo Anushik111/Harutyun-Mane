@@ -47,6 +47,11 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .hero .names{z-index:1}
 .hero .names{background:transparent}
 .hero .names{letter-spacing:1px}
+/* Couple photo above the names */
+.couple-photo{width:145px;height:145px;margin:0 auto 18px;border-radius:50%;overflow:hidden;border:1px solid rgba(70,66,60,.15);background:#eee;box-shadow:0 4px 16px rgba(50,45,38,.08)}
+.couple-photo img{width:100%;height:100%;display:block;object-fit:cover}
+@media(max-width:600px){.couple-photo{width:112px;height:112px;margin-bottom:14px}}
+
 
 55%{transform:translateY(-4px) scale(1.03)}
   100%{opacity:1;transform:translateY(0) scale(1)}
@@ -463,7 +468,11 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 
 <main class="main" id="main">
 <section class="section hero">
-<div><div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div>
+<div>
+<div class="couple-photo">
+  <img src="couple.jpg" alt="Հարություն և Մանե">
+</div>
+<div class="names" data-hy="Հարություն &amp; Մանե" data-ru="Арутюн &amp; Мане">Հարություն &amp; Մանե</div>
 <div class="line"></div><div class="calendar-wrap">
   <div class="calendar-title" data-hy="Նոյեմբեր" data-ru="Ноябрь">Նոյեմբեր</div>
   <div class="calendar-grid" aria-label="Calendar November 2026">
