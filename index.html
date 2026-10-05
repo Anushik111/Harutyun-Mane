@@ -447,6 +447,13 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 }
 
 </style>
+
+<style>
+@media (max-width:600px){
+  #bgMusic{display:block;width:calc(100% - 36px);height:38px;position:fixed;left:18px;bottom:76px;z-index:9999;opacity:.96;}
+}
+@media (min-width:601px){#bgMusic{display:none;}}
+</style>
 </head>
 <body>
 <div class="lang-switch" aria-label="Լեզու / Язык"><button id="hyBtn" class="active" type="button">ՀԱՅ</button><button id="ruBtn" type="button">РУС</button></div>
@@ -464,7 +471,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
  </div>
 </div>
 
-<audio id="bgMusic" preload="auto" loop playsinline><source src="https://www.dropbox.com/scl/fi/ghe3n837khp9ivfoyskvy/Indila_-_Love_Story_by_ViOLiNiA__Instrumental__Violin_Version_.mp3?rlkey=20tdv3woanehqvk8yfyfmim8b&st=3cct7ao8&dl=1" type="audio/mpeg"></audio>
+<audio id="bgMusic" preload="auto" loop playsinline controls><source src="https://www.dropbox.com/scl/fi/ghe3n837khp9ivfoyskvy/Indila_-_Love_Story_by_ViOLiNiA__Instrumental__Violin_Version_.mp3?rlkey=20tdv3woanehqvk8yfyfmim8b&st=3cct7ao8&dl=1" type="audio/mpeg"></audio>
 
 <main class="main" id="main">
 <section class="section hero">
@@ -574,7 +581,7 @@ function startMusic(){
 
   bgMusic.volume=0.75;
   bgMusic.muted=false;
-  bgMusic.currentTime=0;
+  if (bgMusic.readyState === 0) bgMusic.load();
 
   const playPromise=bgMusic.play();
 
@@ -610,6 +617,17 @@ musicToggle.addEventListener('click',(e)=>{
   if(musicOn) stopMusic();
   else startMusic();
 });
+
+// На телефонах музыка может быть разрешена только после явного касания.
+// Поэтому повторно запускаем её на первом касании страницы.
+let firstTouchHandled=false;
+function unlockMusicOnTouch(){
+  if(firstTouchHandled || musicOn || !bgMusic) return;
+  firstTouchHandled=true;
+  startMusic();
+}
+document.addEventListener('touchstart',unlockMusicOnTouch,{passive:true,once:true});
+document.addEventListener('pointerdown',unlockMusicOnTouch,{passive:true,once:true});
 
 function openInvitation(e){
   if(e) e.preventDefault();
