@@ -177,7 +177,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 /* --- Շարժվող երթուղու քարտեզ --- */
 .route-map-section{
   background:#eae7e2;
-  padding:0;
+  padding:28px 0;
   min-height:auto;
   display:flex;
   justify-content:center;
@@ -186,7 +186,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 }
 .route-map{
   position:relative;
-  width:min(878px,100vw);
+  width:min(620px,68vw);
   line-height:0;
   margin:0 auto;
 }
@@ -194,13 +194,13 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
   display:block;
   width:100%;
   height:auto;
-  max-width:878px;
+  max-width:620px;
   border:0;
   outline:0;
 }
 .route-pin{
   position:absolute;
-  z-index:5;
+  z-index:8;
   left:56.95%;
   top:23.7%;
   width:30px;
@@ -233,49 +233,55 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
   border-radius:50%;
 }
 .route-pin.active{transform:translate(-50%,-100%) scale(1.04)}
+
 .route-info{
   position:absolute;
-  z-index:4;
-  left:54.8%;
-  top:52.2%;
-  width:41%;
-  min-height:220px;
-  padding:12px 18px 20px;
+  z-index:9;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:180px;
+  min-height:0;
+  padding:12px 14px 14px;
+  box-sizing:border-box;
   text-align:center;
   line-height:1.2;
-  background:rgba(234,231,226,.96);
+  background:rgba(234,231,226,.94);
 }
 .route-time{
   font-family:'Noto Serif Armenian',serif;
-  font-size:clamp(52px,7vw,76px);
+  font-size:clamp(32px,4vw,48px);
   line-height:.95;
   font-weight:400;
   color:#d3d0cb;
-  margin-bottom:12px;
-  letter-spacing:-2px;
+  margin-bottom:8px;
+  letter-spacing:-1px;
 }
 .route-title{
-  font-size:clamp(19px,2.6vw,27px);
+  font-size:clamp(15px,1.7vw,20px);
+  white-space:normal;
+  overflow-wrap:anywhere;
   font-weight:700;
   color:#151615;
-  margin-bottom:7px;
+  margin-bottom:5px;
 }
 .route-place{
-  font-size:clamp(15px,2vw,20px);
+  font-size:clamp(12px,1.3vw,16px);
   color:#272827;
-  min-height:25px;
+  min-height:18px;
 }
 .route-map-button{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:160px;
-  min-height:68px;
-  margin-top:16px;
-  padding:12px 28px;
+  min-width:110px;
+  min-height:42px;
+  margin-top:10px;
+  padding:8px 14px;
+  box-sizing:border-box;
   background:#fff;
   color:#252525;
-  font-size:16px;
+  font-size:13px;
   font-weight:600;
   text-decoration:underline;
   text-underline-offset:3px;
@@ -284,25 +290,75 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 }
 .route-map-button:hover{transform:translateY(-2px);background:#fafafa}
 .route-map-button.disabled{opacity:.35;pointer-events:none;text-decoration:none}
+.stop-map-button{min-width:82px;min-height:32px;margin-top:7px;padding:5px 10px;font-size:11px;}
+
+/* Երեք կանգառները կողքերում */
+.route-stop{
+  position:absolute;
+  z-index:7;
+  width:170px;
+  padding:10px 12px;
+  box-sizing:border-box;
+  background:rgba(255,255,255,.90);
+  color:#252525;
+  text-align:center;
+  line-height:1.15;
+}
+.route-stop .stop-time{
+  font-family:'Noto Serif Armenian',serif;
+  font-size:27px;
+  color:#d0cdc8;
+  margin-bottom:3px;
+}
+.route-stop .stop-title{
+  font-size:15px;
+  font-weight:700;
+}
+.route-stop .stop-place{
+  font-size:12px;
+  margin-top:4px;
+  color:#555;
+}
+.route-stop.stop-home{left:-185px;top:12%}
+.route-stop.stop-church{right:-185px;top:43%}
+.route-stop.stop-restaurant{left:-185px;top:78%}
+
+@media(max-width:900px){
+  .route-map{width:min(600px,62vw)}
+  .route-stop{width:150px}
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-162px}
+  .route-stop.stop-church{right:-162px}
+}
 @media(max-width:600px){
-  .route-map-section{padding:0}
-  .route-map{width:100%}
+  .route-map-section{padding:20px 0;overflow:visible}
+  .route-map{width:62vw;max-width:420px}
   .route-pin{width:24px;height:32px}
   .route-pin::before{width:21px;height:21px}
   .route-pin span{width:9px;height:9px;top:4px}
   .route-info{
-    left:51%;
-    top:50%;
-    width:46%;
-    min-height:185px;
-    padding:8px 8px 14px;
+    width:145px;
+    padding:8px 9px 10px;
   }
-  .route-time{font-size:clamp(39px,10vw,58px);margin-bottom:8px}
-  .route-title{font-size:clamp(15px,4vw,21px)}
-  .route-place{font-size:clamp(12px,3.2vw,16px)}
-  .route-map-button{min-width:105px;min-height:48px;margin-top:10px;padding:8px 14px;font-size:12px}
+  .route-time{font-size:32px;margin-bottom:6px}
+  .route-title{font-size:14px;line-height:1.15}
+  .route-place{font-size:11px}
+  .route-map-button{min-width:88px;min-height:38px;margin-top:7px;padding:6px 10px;font-size:11px}
+  .route-stop{width:112px;padding:7px 6px}
+  .route-stop .stop-time{font-size:22px}
+  .route-stop .stop-title{font-size:11px}
+  .route-stop .stop-place{font-size:9px}
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-120px}
+  .route-stop.stop-church{right:-120px}
 }
-
+@media(max-width:430px){
+  .route-map{width:58vw}
+  .route-stop{width:96px}
+  .route-stop.stop-home,.route-stop.stop-restaurant{left:-103px}
+  .route-stop.stop-church{right:-103px}
+  .route-stop .stop-time{font-size:19px}
+  .route-stop .stop-title{font-size:10px}
+  .route-stop .stop-place{font-size:8px}
+}
 </style>
 </head>
 <body>
@@ -360,12 +416,25 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
       <span></span>
     </div>
 
-    <div class="route-info" id="routeInfo">
-      <div class="route-time" id="routeTime">10։00</div>
-      <div class="route-title" data-hy="Հարսի տուն" data-ru="Дом невесты">Հարսի տուն</div>
-      <div class="route-place" data-hy="Սկիզբը՝ հարսի տնից" data-ru="Начало — от дома невесты">Սկիզբը՝ հարսի տնից</div>
-      <a class="route-map-button" id="routeMapButton" href="#" target="_blank" rel="noopener" data-hy="Քարտեզ" data-ru="Карта">Քարտեզ</a>
+    <div class="route-stop stop-home">
+      <div class="stop-time">10։00</div>
+      <div class="stop-title">Հարսի տուն</div>
+      <div class="stop-place">Սկիզբը՝ հարսի տնից</div>
     </div>
+
+    <div class="route-stop stop-church">
+      <div class="stop-time">13։00</div>
+      <div class="stop-title">Սուրբ Սարգիս եկեղեցի</div>
+      <div class="stop-place">Պսակադրություն</div>
+      <a class="route-map-button stop-map-button" href="https://yandex.com/maps/org/armenian_apostolic_church_of_st_sarkis/242380405723/?ll=39.182941%2C51.674349&z=16" target="_blank" rel="noopener">Քարտեզ</a>
+    </div>
+
+    <div class="route-stop stop-restaurant">
+      <div class="stop-time">17։00</div>
+      <div class="stop-title">Ռեստորան</div>
+      <div class="stop-place">Հարսանյաց հանդիսություն</div>
+    </div>
+
   </div>
 </section>
 <section class="section countdown"><h2 data-hy="Մինչև մեր օրը" data-ru="До нашего дня">Մինչև մեր օրը</h2><div class="times"><div class="time"><strong id="d">00</strong><span data-hy="ՕՐ" data-ru="ДНЕЙ">ՕՐ</span></div><div class="time"><strong id="h">00</strong><span data-hy="ԺԱՄ" data-ru="ЧАСОВ">ԺԱՄ</span></div><div class="time"><strong id="m">00</strong><span data-hy="ՐՈՊԵ" data-ru="МИНУТ">ՐՈՊԵ</span></div><div class="time"><strong id="s">00</strong><span data-hy="ՎԱՅՐԿՅԱՆ" data-ru="СЕКУНД">ՎԱՅՐԿՅԱՆ</span></div></div></section>
@@ -484,7 +553,7 @@ const routeMapButton=document.getElementById('routeMapButton');
 const routeStages=[
   {p:0, x:56.95, y:23.7, timeHy:'10։00', timeRu:'10:00', titleHy:'Հարսի տուն', titleRu:'Дом невесты', placeHy:'Սկիզբը՝ հարսի տնից', placeRu:'Начало — от дома невесты', map:null},
   {p:.5, x:45.9, y:56.0, timeHy:'13։00', timeRu:'13:00', titleHy:'Սուրբ Սարգիս եկեղեցի', titleRu:'Церковь Святого Саркиса', placeHy:'Պսակադրություն', placeRu:'Венчание', map:'https://yandex.com/maps/org/armenian_apostolic_church_of_st_sarkis/242380405723/?ll=39.182941%2C51.674349&z=16'},
-  {p:1, x:56.9, y:93.2, timeHy:'17։00', timeRu:'17:00', titleHy:'Grace Hall', titleRu:'Grace Hall', placeHy:'Հարսանյաց հանդիսություն', placeRu:'Свадебное торжество', map:'https://yandex.com/maps/org/greys_hall/80368514301/'}
+  {p:1, x:56.9, y:93.2, timeHy:'17։00', timeRu:'17:00', titleHy:'Ռեստորան', titleRu:'Ресторан', placeHy:'Հարսանյաց հանդիսություն', placeRu:'Свадебное торжество', map:'https://yandex.com/maps/org/greys_hall/80368514301/'}
 ];
 function setRouteStage(index){
   const st=routeStages[index];
