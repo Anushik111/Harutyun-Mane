@@ -175,190 +175,22 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 
 
 /* --- Շարժվող երթուղու քարտեզ --- */
-.route-map-section{
-  background:#eae7e2;
-  padding:28px 0;
-  min-height:auto;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
-.route-map{
-  position:relative;
-  width:min(620px,68vw);
-  line-height:0;
-  margin:0 auto;
-}
-.route-bg{
-  display:block;
-  width:100%;
-  height:auto;
-  max-width:620px;
-  border:0;
-  outline:0;
-}
-.route-pin{
-  position:absolute;
-  z-index:8;
-  left:56.95%;
-  top:23.7%;
-  width:30px;
-  height:38px;
-  transform:translate(-50%,-100%);
-  transition:left .9s cubic-bezier(.22,.61,.36,1),top .9s cubic-bezier(.22,.61,.36,1),transform .35s ease;
-  filter:drop-shadow(0 5px 5px rgba(50,45,38,.16));
-  pointer-events:none;
-}
-.route-pin::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  width:25px;
-  height:25px;
-  transform:translateX(-50%) rotate(45deg);
-  background:#343634;
-  border-radius:50% 50% 50% 0;
-}
-.route-pin span{
-  position:absolute;
-  z-index:2;
-  left:50%;
-  top:5px;
-  width:11px;
-  height:11px;
-  transform:translateX(-50%);
-  background:#eeeae4;
-  border-radius:50%;
-}
-.route-pin.active{transform:translate(-50%,-100%) scale(1.04)}
-
-.route-info{
-  position:absolute;
-  z-index:9;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:180px;
-  min-height:0;
-  padding:12px 14px 14px;
-  box-sizing:border-box;
-  text-align:center;
-  line-height:1.2;
-  background:rgba(234,231,226,.94);
-}
-.route-time{
-  font-family:'Noto Serif Armenian',serif;
-  font-size:clamp(32px,4vw,48px);
-  line-height:.95;
-  font-weight:400;
-  color:#d3d0cb;
-  margin-bottom:8px;
-  letter-spacing:-1px;
-}
-.route-title{
-  font-size:clamp(15px,1.7vw,20px);
-  white-space:normal;
-  overflow-wrap:anywhere;
-  font-weight:700;
-  color:#151615;
-  margin-bottom:5px;
-}
-.route-place{
-  font-size:clamp(12px,1.3vw,16px);
-  color:#272827;
-  min-height:18px;
-}
-.route-map-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:110px;
-  min-height:42px;
-  margin-top:10px;
-  padding:8px 14px;
-  box-sizing:border-box;
-  background:#fff;
-  color:#252525;
-  font-size:13px;
-  font-weight:600;
-  text-decoration:underline;
-  text-underline-offset:3px;
-  cursor:pointer;
-  transition:.25s ease;
-}
-.route-map-button:hover{transform:translateY(-2px);background:#fafafa}
-.route-map-button.disabled{opacity:.35;pointer-events:none;text-decoration:none}
-.stop-map-button{min-width:82px;min-height:32px;margin-top:7px;padding:5px 10px;font-size:11px;}
-
-/* Երեք կանգառները կողքերում */
-.route-stop{
-  position:absolute;
-  z-index:7;
-  width:170px;
-  padding:10px 12px;
-  box-sizing:border-box;
-  background:rgba(255,255,255,.90);
-  color:#252525;
-  text-align:center;
-  line-height:1.15;
-}
-.route-stop .stop-time{
-  font-family:'Noto Serif Armenian',serif;
-  font-size:27px;
-  color:#d0cdc8;
-  margin-bottom:3px;
-}
-.route-stop .stop-title{
-  font-size:15px;
-  font-weight:700;
-}
-.route-stop .stop-place{
-  font-size:12px;
-  margin-top:4px;
-  color:#555;
-}
-.route-stop.stop-home{left:-185px;top:12%}
-.route-stop.stop-church{right:-185px;top:43%}
-.route-stop.stop-restaurant{left:-185px;top:78%}
-
-@media(max-width:900px){
-  .route-map{width:min(600px,62vw)}
-  .route-stop{width:150px}
-  .route-stop.stop-home,.route-stop.stop-restaurant{left:-162px}
-  .route-stop.stop-church{right:-162px}
-}
-@media(max-width:600px){
-  .route-map-section{padding:20px 0;overflow:visible}
-  .route-map{width:62vw;max-width:420px}
-  .route-pin{width:24px;height:32px}
-  .route-pin::before{width:21px;height:21px}
-  .route-pin span{width:9px;height:9px;top:4px}
-  .route-info{
-    width:145px;
-    padding:8px 9px 10px;
-  }
-  .route-time{font-size:32px;margin-bottom:6px}
-  .route-title{font-size:14px;line-height:1.15}
-  .route-place{font-size:11px}
-  .route-map-button{min-width:88px;min-height:38px;margin-top:7px;padding:6px 10px;font-size:11px}
-  .route-stop{width:112px;padding:7px 6px}
-  .route-stop .stop-time{font-size:22px}
-  .route-stop .stop-title{font-size:11px}
-  .route-stop .stop-place{font-size:9px}
-  .route-stop.stop-home,.route-stop.stop-restaurant{left:-120px}
-  .route-stop.stop-church{right:-120px}
-}
-@media(max-width:430px){
-  .route-map{width:58vw}
-  .route-stop{width:96px}
-  .route-stop.stop-home,.route-stop.stop-restaurant{left:-103px}
-  .route-stop.stop-church{right:-103px}
-  .route-stop .stop-time{font-size:19px}
-  .route-stop .stop-title{font-size:10px}
-  .route-stop .stop-place{font-size:8px}
-}
+.route-map-section{background:#eae7e2;padding:36px 0;min-height:980px;display:flex;justify-content:center;align-items:center;overflow:visible}
+.route-map{position:relative;width:520px;height:900px;line-height:0;margin:0 auto}
+.route-bg{display:block;width:100%;height:100%;max-width:none;border:0;outline:0;object-fit:fill}
+.route-pin{position:absolute;z-index:8;left:56.95%;top:23.7%;width:30px;height:38px;transform:translate(-50%,-100%);transition:left .9s cubic-bezier(.22,.61,.36,1),top .9s cubic-bezier(.22,.61,.36,1),transform .35s ease;filter:drop-shadow(0 5px 5px rgba(50,45,38,.16));pointer-events:none}
+.route-pin::before{content:"";position:absolute;font-weight:700}
+.route-stop{position:absolute;z-index:7;width:170px;padding:12px 14px 14px;text-align:center;background:rgba(255,255,255,.94);line-height:1.15;box-sizing:border-box}
+.route-stop .stop-time{font-size:30px;line-height:1;color:#d2d0cb;margin-bottom:7px}
+.route-stop .stop-title{font-size:15px;font-weight:700;line-height:1.2;color:#161616}
+.route-stop .stop-place{font-size:12px;margin-top:6px;color:#555;line-height:1.25}
+.route-stop.stop-home{left:-190px;top:10%}
+.route-stop.stop-church{right:-190px;top:43%}
+.route-stop.stop-restaurant{left:-190px;top:78%}
+.route-map-button{display:inline-flex;align-items:center;justify-content:center;min-width:90px;min-height:38px;margin-top:10px;padding:7px 12px;font-size:11px}
+@media(max-width:900px){.route-map-section{min-height:900px}.route-map{width:440px;height:820px}.route-stop{width:155px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-170px}.route-stop.stop-church{right:-170px}}
+@media(max-width:600px){.route-map-section{padding:24px 0;min-height:820px;overflow:visible}.route-map{width:300px;height:760px}.route-pin{width:24px;height:32px}.route-pin::before{width:21px;height:21px}.route-pin span{width:9px;height:9px;top:4px}.route-stop{width:140px;padding:9px 8px 11px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-145px}.route-stop.stop-church{right:-145px}.route-stop .stop-time{font-size:25px}.route-stop .stop-title{font-size:13px}.route-stop .stop-place{font-size:10px}.route-map-button{min-width:80px;min-height:34px;margin-top:7px;padding:5px 9px;font-size:10px}}
+@media(max-width:430px){.route-map{width:270px;height:720px}.route-stop{width:128px}.route-stop.stop-home,.route-stop.stop-restaurant{left:-132px}.route-stop.stop-church{right:-132px}.route-stop .stop-time{font-size:22px}.route-stop .stop-title{font-size:12px}.route-stop .stop-place{font-size:9px}}
 </style>
 </head>
 <body>
