@@ -452,6 +452,28 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 
 <style>
 #bgMusic{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;position:absolute !important;pointer-events:none !important;}
+
+/* Swipeable photo gallery */
+.photo-gallery-section{padding:88px 0 100px;background:#f7f4ee;overflow:hidden}
+.photo-gallery-section .section-inner{width:min(760px,92vw);margin:0 auto;text-align:center}
+.gallery-hint{margin-top:-8px;margin-bottom:28px;opacity:.72}
+.swipe-gallery{position:relative;width:100%;overflow:hidden;border-radius:0;touch-action:pan-y}
+.gallery-track{display:flex;transition:transform .45s ease;will-change:transform}
+.gallery-slide{flex:0 0 100%;width:100%;padding:0 4px;box-sizing:border-box}
+.gallery-slide img{display:block;width:100%;height:min(72vh,620px);object-fit:cover;background:#ebe7df;border:0}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,253,248,.92);color:#59644c;font-size:32px;line-height:40px;box-shadow:0 8px 22px rgba(60,45,28,.13);cursor:pointer;z-index:2}
+.gallery-prev{left:14px}
+.gallery-next{right:14px}
+.gallery-dots{display:flex;justify-content:center;gap:7px;margin-top:18px}
+.gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(89,100,76,.25);transition:.2s}
+.gallery-dot.active{background:#59644c;transform:scale(1.25)}
+@media(max-width:600px){
+  .photo-gallery-section{padding:68px 0 78px}
+  .gallery-slide img{height:68vh;max-height:560px;object-fit:cover}
+  .gallery-arrow{width:40px;height:40px;font-size:28px;line-height:36px}
+  .gallery-prev{left:9px}.gallery-next{right:9px}
+}
+
 </style>
 </head>
 <body>
@@ -560,6 +582,28 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
     </div>
   </div>
 </section>
+
+<section class="section photo-gallery-section" id="photoGallery">
+  <div class="section-inner">
+    <div class="section-kicker">ՄԵՐ ՊԱՏՄՈՒԹՅՈՒՆԸ</div>
+    <h2 class="section-title" data-hy="Հիշողություններ" data-ru="Воспоминания">Հիշողություններ</h2>
+    <p class="section-text gallery-hint" data-hy="Սահեցրեք աջ կամ ձախ՝ նկարները թերթելու համար" data-ru="Смахивайте вправо или влево, чтобы листать фотографии">Սահեցրեք աջ կամ ձախ՝ նկարները թերթելու համար</p>
+
+    <div class="swipe-gallery" aria-label="Լուսանկարների պատկերասրահ">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide"><img src="gallery-1.jpg" alt="Harutyun & Mane — 1"></div>
+        <div class="gallery-slide"><img src="gallery-2.jpg" alt="Harutyun & Mane — 2"></div>
+        <div class="gallery-slide"><img src="gallery-3.jpg" alt="Harutyun & Mane — 3"></div>
+        <div class="gallery-slide"><img src="gallery-4.jpg" alt="Harutyun & Mane — 4"></div>
+        <div class="gallery-slide"><img src="gallery-5.jpg" alt="Harutyun & Mane — 5"></div>
+      </div>
+      <button class="gallery-arrow gallery-prev" type="button" aria-label="Նախորդ նկարը">‹</button>
+      <button class="gallery-arrow gallery-next" type="button" aria-label="Հաջորդ նկարը">›</button>
+    </div>
+    <div class="gallery-dots" id="galleryDots" aria-hidden="true"></div>
+  </div>
+</section>
+
 <section class="section rsvp"><h2 data-hy="Հաստատել մասնակցությունը" data-ru="Подтвердить участие">Հաստատել մասնակցությունը</h2><form class="form" id="form"><div class="form-grid">
 <div class="group"><label data-hy="Կկարողանա՞ք գալ" data-ru="Сможете прийти?">Կկարողանա՞ք գալ</label><select required><option value="" data-hy="Ընտրել" data-ru="Выбрать">Ընտրել</option><option data-hy="Այո, սիրով" data-ru="Да, с удовольствием">Այո, սիրով</option><option data-hy="Ցավոք, չեմ կարող" data-ru="К сожалению, не смогу">Ցավոք, չեմ կարող</option></select></div>
 <div class="group"><label data-hy="Հյուրերի քանակ" data-ru="Количество гостей">Հյուրերի քանակ</label><select required><option value="" data-hy="Ընտրել քանակը" data-ru="Выберите количество">Ընտրել քանակը</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option data-hy="6 և ավելի" data-ru="6 и более">6 և ավելի</option></select></div>
@@ -742,5 +786,46 @@ const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 document.getElementById('form').onsubmit=e=>{e.preventDefault();alert(lang==='hy'?'Շնորհակալություն ❤️ Ձեր պատասխանը ընդունված է։':'Спасибо ❤️ Ваш ответ принят.')};
 updateMusicButton();
+</script>
+<script>
+
+/* Swipeable photo gallery */
+(function(){
+  const track=document.getElementById('galleryTrack');
+  const dots=document.getElementById('galleryDots');
+  if(!track || !dots) return;
+  const slides=Array.from(track.querySelectorAll('.gallery-slide'));
+  let index=0, startX=0, deltaX=0, dragging=false;
+
+  slides.forEach((_,i)=>{
+    const d=document.createElement('span');
+    d.className='gallery-dot'+(i===0?' active':'');
+    dots.appendChild(d);
+  });
+
+  function render(){
+    track.style.transform='translateX(-'+(index*100)+'%)';
+    dots.querySelectorAll('.gallery-dot').forEach((d,i)=>d.classList.toggle('active',i===index));
+  }
+  function next(){ index=(index+1)%slides.length; render(); }
+  function prev(){ index=(index-1+slides.length)%slides.length; render(); }
+
+  const nextBtn=document.querySelector('.gallery-next');
+  const prevBtn=document.querySelector('.gallery-prev');
+  if(nextBtn) nextBtn.addEventListener('click',next);
+  if(prevBtn) prevBtn.addEventListener('click',prev);
+
+  track.addEventListener('touchstart',e=>{
+    startX=e.touches[0].clientX; deltaX=0; dragging=true;
+  },{passive:true});
+  track.addEventListener('touchmove',e=>{
+    if(dragging) deltaX=e.touches[0].clientX-startX;
+  },{passive:true});
+  track.addEventListener('touchend',()=>{
+    if(Math.abs(deltaX)>45){ deltaX<0 ? next() : prev(); }
+    dragging=false; deltaX=0;
+  });
+})();
+
 </script>
 </body></html>
